@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd">
+
+	<cache name="org.hibernate.cache.UpdateTimestampsCache"
+		maxElementsInMemory="5000" eternal="true" overflowToDisk="true" />
+	<cache name="org.hibernate.cache.StandardQueryCache"
+		maxElementsInMemory="10000" eternal="false" timeToLiveSeconds="120"
+		overflowToDisk="true" />
+
+	<cache name="query.BaseOrgan" maxElementsInMemory="5000" eternal="true"
+		timeToIdleSeconds="200" timeToLiveSeconds="200" overflowToDisk="false"
+		diskPersistent="false" memoryStoreEvictionPolicy="LRU" />
+
+	<cache name="SimplePageCachingFilter" maxEntriesLocalHeap="10000"
+		maxEntriesLocalDisk="1000" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="300" timeToLiveSeconds="600"
+		memoryStoreEvictionPolicy="LFU" />
+	<defaultCache name="defautCache" maxElementsInMemory="5000"
+		timeToIdleSeconds="200" timeToLiveSeconds="60" />
+</ehcache>
+

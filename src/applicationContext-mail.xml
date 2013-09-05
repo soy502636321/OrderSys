@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="qqMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${qq.mail.host}" />
+		<property name="port" value="${qq.mail.port}" />
+		<property name="username" value="${qq.mail.username}" />
+		<property name="password" value="${qq.mail.password}" />
+		<property name="defaultEncoding" value="${qq.mail.defaultEncoding}" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">${qq.mail.auth}</prop>
+				<prop key="mail.smtp.timeout">${qq.mail.timeout}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="googleMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${google.mail.host}" />
+		<property name="username" value="${google.mail.username}" />
+		<property name="password" value="${google.mail.password}" />
+		<property name="defaultEncoding" value="${google.mail.defaultEncoding}" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">${google.mail.auth}</prop>
+				<prop key="mail.smtp.timeout">${google.mail.timeout}</prop>
+				<prop key="mail.smtp.port">${google.mail.port}</prop>
+				<prop key="mail.smtp.socketFactory.port">${google.mail.socketFactory.port}</prop>
+				<prop key="mail.smtp.socketFactory.fallback">${google.mail.socketFactory.fallback}</prop>
+				<prop key="mail.smtp.socketFactory.class">${google.mail.socketFactory.class}</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="velocityEngineFactoryBean" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+	</bean>
+	
+	<bean id="mailUtil" class="order.hq.mail.MailUtil">
+		<property name="googleMailSender" ref="googleMailSender" />
+		<property name="qqMailSender" ref="qqMailSender" />
+		<property name="velocityEngine" ref="velocityEngineFactoryBean" />
+	</bean>
+</beans>
