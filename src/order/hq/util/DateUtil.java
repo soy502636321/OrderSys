@@ -13,31 +13,40 @@ import java.util.Locale;
  */
 public class DateUtil{
 
-	//default date format
+	//默认的日期格式(年-月-日)
 	private final static String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
+	
+	//默认的日期编号(年-月-日)
+	private final static String DEFAULT_DATE_NUMBER = "yyyyMMdd";
 
-	//default time format
+	//默认的日期时间格式(年-月-日 时:分:秒)
 	private final static String DEFAULT_TIME_FORMAT = DEFAULT_DATE_FORMAT + " HH:mm:ss";
 
-	//default date format
+	//默认的日期星期格式(年-月-日 星期)
 	private final static String DEFAULT_DATEANDWEEK_FORMAT = "yyyy-MM-dd EEEE";
 	
-	//default output format: yyyy-MM-dd
 	private final static DateFormat dfDate = new SimpleDateFormat(DEFAULT_DATE_FORMAT);
 	
+	private final static DateFormat dfDateNumber = new SimpleDateFormat(DEFAULT_DATE_NUMBER);
 	
-	//default output format: yyyy-MM-dd HH:mm:ss
 	private final static DateFormat dfDateTime = new SimpleDateFormat(DEFAULT_TIME_FORMAT);
 	
-	//default output format: yyyy-MM-dd 星期一
 	private final static DateFormat dfDateAndWeek = 
 			new SimpleDateFormat(DEFAULT_DATEANDWEEK_FORMAT,Locale.CHINA);
 
 	/**
-	 * @return get now time format: yyyy-MM-dd
+	 * 返回当前日期
 	 */
 	public static String getDate(){
 		return dfDate.format(new Date());
+	}
+	
+	/**
+	 * 返回当前日期编号
+	 * @return
+	 */
+	public static String getDateNumber() {
+		return dfDateNumber.format(new Date()); 
 	}
 	
 	/**
@@ -73,4 +82,6 @@ public class DateUtil{
 	public static void main(String[] args) {
 		System.out.println("getDate():"+getDateAndWeek());
 	}
+
+
 }

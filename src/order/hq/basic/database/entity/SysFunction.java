@@ -1,5 +1,6 @@
 package order.hq.basic.database.entity;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,11 +17,10 @@ public class SysFunction implements java.io.Serializable {
 	private String functionUrl;
 	private String functionType;
 	private String remark;
+	private Date operTime;
 
-	
 	/**
-	 * @hibernate.many-to-one
-	 * 		column="parentId"
+	 * @hibernate.many-to-one column="parentId"
 	 */
 	private SysFunction parent;
 	/**
@@ -30,8 +30,6 @@ public class SysFunction implements java.io.Serializable {
 	 */
 	private Set children = new HashSet(0);
 
-	
-	
 	// Constructors
 
 	/** default constructor */
@@ -39,8 +37,6 @@ public class SysFunction implements java.io.Serializable {
 	}
 
 	// Property accessors
-
-
 
 	public String getFunctionName() {
 		return this.functionName;
@@ -81,7 +77,7 @@ public class SysFunction implements java.io.Serializable {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	
+
 	public SysFunction getParent() {
 		return parent;
 	}
@@ -98,5 +94,12 @@ public class SysFunction implements java.io.Serializable {
 		this.children = children;
 	}
 
+	public Date getOperTime() {
+		return operTime;
+	}
+
+	public void setOperTime(Date operTime) {
+		this.operTime = operTime;
+	}
 
 }

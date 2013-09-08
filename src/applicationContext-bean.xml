@@ -6,15 +6,48 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
+	<!-- 用户 -->
 	<bean id="sysUserDAO" class="order.hq.basic.dao.impl.SysUserDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
+	<!-- 角色 -->
 	<bean id="sysSectionDAO" class="order.hq.basic.dao.impl.SysSectionDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
+	<!-- 机构 -->
 	<bean id="baseOrganDAO" class="order.hq.basic.dao.impl.BaseOrganDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 用户功能 -->
+	<bean id="sysFunctionDAO" class="order.hq.basic.dao.impl.SysFunctionDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 订单状态 -->
+	<bean id="configSysOrderStateDAO" class="order.hq.basic.dao.impl.ConfigSysOrderStateDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 订单 -->
+	<bean id="sysOrderDAO" class="order.hq.basic.dao.impl.SysOrderDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 语种 -->
+	<bean id="baseLanguageDAO" class="order.hq.basic.dao.impl.BaseLanguageDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 原文文件 -->
+	<bean id="baseMasterFileDAO" class="order.hq.basic.dao.impl.BaseMasterFileDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 译文文件 -->
+	<bean id="baseTranslatedFileDAO" class="order.hq.basic.dao.impl.BaseTranslatedFileDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 </beans>

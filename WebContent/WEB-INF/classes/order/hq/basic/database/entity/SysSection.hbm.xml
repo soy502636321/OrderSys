@@ -6,7 +6,7 @@
 -->
 <hibernate-mapping>
     <class name="order.hq.basic.database.entity.SysSection" table="SYS_SECTION" schema="ORDER">
-        <id name="sectionCode" type="java.lang.String">
+        <id name="sectionPid" type="java.lang.String">
             <column name="SECTION_PID" length="50" />
             <generator class="uuid" />
         </id>

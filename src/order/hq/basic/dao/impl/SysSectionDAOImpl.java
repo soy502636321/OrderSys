@@ -9,6 +9,7 @@ import order.hq.basic.database.entity.SysSection;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.exception.DataException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
@@ -22,11 +23,11 @@ public class SysSectionDAOImpl extends AbstractBaseDAO implements SysSectionDAO 
 	private static final Logger log = LoggerFactory.getLogger(SysSectionDAOImpl.class);
 
 	@Override
-	public List<?> findAll(){
+	public List<SysSection> findAll(){
 		log.debug("找出所有部门信息");
 		try {
 			return getHibernateTemplate().loadAll(SysSection.class);
-		} catch (Exception e) {
+		} catch (DataException e) {
 			log.error("找出所有部门信息异常:"+e);
 		}
 		return null;

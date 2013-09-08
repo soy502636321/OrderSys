@@ -23,7 +23,7 @@ public class LoginAction extends BaseAction {
 	private static final Logger log = LoggerFactory
 			.getLogger(LoginAction.class);
 
-	private SysUserService userService;
+	private SysUserService sysUserService;
 	private BaseOrganDAO baseOrganDAO;
 	private String userPid;
 	private String password;
@@ -33,32 +33,17 @@ public class LoginAction extends BaseAction {
 	public String login() throws Exception {
 		log.debug("登录: 用户名:" + getUserPid() + ",密码:" + getPassword());
 		
-		new Thread(){
-			public void run() {
-				while (true) {
-					List<?> list = getBaseOrganDAO().findAll();
-					DateFormat dateFormat = new SimpleDateFormat(
-							"yyyy-MM-dd HH:mm:ss");
-					System.out.println(dateFormat.format(new Date()) + " : "
-							+ list.size());
-					try {
-						Thread.currentThread().sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			};
-		}.start();
-		
 		// 清除session
 		this.getSession().remove(GlobalUtil.LOGINUSER);
 		// 查询登录的用户名
-		SysUserVO loginSysUserVO = userService.findByPK(getUserPid());
+		SysUserVO loginSysUserVO = sysUserService.findByPK(getUserPid());
 		if (loginSysUserVO == null) {
 			addActionError("该用户名不存在，请联系客户！");
 			return ForwardUtil.FORWARD_FAIL;
 		}
+		System.out.println("is equals:");
+		System.out.println(PasswordControl.EncryptePassword(getPassword()));
+		System.out.println(loginSysUserVO.getPassword());
 		if (!PasswordControl.EncryptePassword(getPassword()).equals(
 				loginSysUserVO.getPassword())) {
 			addActionError("密码不正确！");
@@ -74,7 +59,7 @@ public class LoginAction extends BaseAction {
 		// 获得客户功能
 		if (loginSysUserVO.isAdmin()) {
 			log.debug("登录的用户是管理员");
-			loginSysUserVO.setFunctionList(userService.findSysFunctionAll());
+			loginSysUserVO.setFunctionList(sysUserService.findSysFunctionAll());
 		} else {
 			log.debug("登录的用户是普通用户");
 			SysSection sysSection = loginSysUserVO.getSysUser().getSysSection();
@@ -84,10 +69,9 @@ public class LoginAction extends BaseAction {
 		}
 
 		// 获得客户的列表
-		this.getSession()
-				.put(GlobalUtil.MENUSTRING, getMenuStr(loginSysUserVO));
+		this.getSession().put(GlobalUtil.MENUSTRING, getMenuStr(loginSysUserVO));
 		this.getSession().put(GlobalUtil.LOGINUSER, loginSysUserVO);
-		
+
 		return ForwardUtil.FORWARD_SUCCESS;
 	}
 
@@ -114,8 +98,8 @@ public class LoginAction extends BaseAction {
 			if (url != null && !url.equals("")) {
 				nodeUrl = ",url:\"" + contextPath + url + "\", target:\"I1\"";
 			}
-			nodes += "{ id:" + Double.valueOf(functionPid) + ", pId:"
-					+ Double.valueOf(parentPid) + ", name:\"" + functionName
+			nodes += "{ id:\"" + String.valueOf(functionPid) + "\", pId:\""
+					+ String.valueOf(parentPid) + "\", name:\"" + functionName
 					+ "\"" + nodeUrl + "},";
 		}
 
@@ -123,6 +107,50 @@ public class LoginAction extends BaseAction {
 			nodes = "[ " + nodes.substring(0, nodes.length() - 1) + " ]";
 
 		return nodes;
+	}
+
+	public SysUserService getSysUserService() {
+		return sysUserService;
+	}
+
+	public void setSysUserService(SysUserService sysUserService) {
+		this.sysUserService = sysUserService;
+	}
+
+	public BaseOrganDAO getBaseOrganDAO() {
+		return baseOrganDAO;
+	}
+
+	public void setBaseOrganDAO(BaseOrganDAO baseOrganDAO) {
+		this.baseOrganDAO = baseOrganDAO;
+	}
+
+	public String getUserPid() {
+		return userPid;
+	}
+
+	public void setUserPid(String userPid) {
+		this.userPid = userPid;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	// // get new password by email
@@ -170,41 +198,4 @@ public class LoginAction extends BaseAction {
 	// return ConstantsForward.FORWARD_LOGIN_PAGE;
 	// }
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public void setUserService(SysUserService userService) {
-		this.userService = userService;
-	}
-
-	public String getPassword() {
-		return password.trim();
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getUserPid() {
-		return userPid;
-	}
-
-	public void setUserPid(String userPid) {
-		this.userPid = userPid;
-	}
-
-	public BaseOrganDAO getBaseOrganDAO() {
-		return baseOrganDAO;
-	}
-
-	public void setBaseOrganDAO(BaseOrganDAO baseOrganDAO) {
-		this.baseOrganDAO = baseOrganDAO;
-	}
-
-	
 }

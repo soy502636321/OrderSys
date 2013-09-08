@@ -11,7 +11,7 @@ public class SysSection implements java.io.Serializable {
 
 	// Fields
 
-	private String sectionCode;
+	private String sectionPid;
 	private String sectionName;
 	private String remark;
 	private Set sectionFunctions = new HashSet(0);
@@ -24,14 +24,6 @@ public class SysSection implements java.io.Serializable {
 	}
 
 	// Property accessors
-
-	public String getSectionCode() {
-		return this.sectionCode;
-	}
-
-	public void setSectionCode(String sectionCode) {
-		this.sectionCode = sectionCode;
-	}
 
 	public String getSectionName() {
 		return this.sectionName;
@@ -65,4 +57,13 @@ public class SysSection implements java.io.Serializable {
 		this.sectionOrgans = sectionOrgans;
 	}
 
+	public String getSectionPid() {
+		return sectionPid;
+	}
+
+	public void setSectionPid(String sectionPid) {
+		this.sectionPid = sectionPid;
+	}
+
+	
 }

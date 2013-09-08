@@ -4,6 +4,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import order.hq.basic.vo.SysUserVO;
+import order.hq.util.GlobalUtil;
+
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -50,6 +53,9 @@ public class BaseAction extends ActionSupport implements SessionAware,ServletReq
 	public boolean isNotNull(String obj){
 		return !isNull(obj);
 	}
-
-
+	
+	public SysUserVO getLoginVO() {
+		SysUserVO sysUserVO = (SysUserVO) getSession().get(GlobalUtil.LOGINUSER);
+		return sysUserVO;
+	}
 }

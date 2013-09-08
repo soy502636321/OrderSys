@@ -21,7 +21,7 @@ public class SysFunctionDAOImpl extends AbstractBaseDAO implements SysFunctionDA
 	public List<?> findAll(){
 		log.debug("找出所有功能信息");
 		try {
-			String hql = "from SysFunction obj order by obj.functionPid";
+			String hql = "from SysFunction obj order by obj.operTime";
 			return getHibernateTemplate().find(hql);
 		} catch (Exception e) {
 			log.error("找出所有功能信息异常:"+e);

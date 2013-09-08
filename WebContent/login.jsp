@@ -52,7 +52,7 @@ body {
                 									<div align="center"><span class="STYLE3">用户</span></div>
                 								</td>
                 								<td width="79%" height="30">
-                									<s:textfield name="userId" id="userId" cssStyle="height:18px; width:130px; border:solid 1px #cadcb2; font-size:12px; color:#81b432;" ></s:textfield>
+                									<s:textfield name="userPid" id="userId" cssStyle="height:18px; width:130px; border:solid 1px #cadcb2; font-size:12px; color:#81b432;" ></s:textfield>
                 								</td>
               								</tr>
               								<tr>

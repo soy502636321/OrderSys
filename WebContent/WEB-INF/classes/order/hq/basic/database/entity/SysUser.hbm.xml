@@ -8,7 +8,6 @@
     <class name="order.hq.basic.database.entity.SysUser" table="SYS_USER" schema="ORDER">
         <id name="userPid" type="java.lang.String">
             <column name="USER_PID" length="50" />
-            <generator class="uuid" />
         </id>
         <many-to-one name="sysSection" class="order.hq.basic.database.entity.SysSection" fetch="select">
             <column name="SECTION_PID" length="50" />

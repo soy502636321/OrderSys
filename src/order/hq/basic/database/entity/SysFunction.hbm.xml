@@ -21,6 +21,10 @@
 		<property name="remark" type="java.lang.String">
 			<column name="REMARK" length="100" />
 		</property>
+		
+		<property name="operTime" type="java.util.Date">
+			<column name="OPER_TIME" />
+		</property>
 
 		<many-to-one name="parent"
 			class="order.hq.basic.database.entity.SysFunction" fetch="select">

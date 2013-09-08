@@ -103,6 +103,9 @@ public class SysUserVO {
 	}
 
 	public String getUserPid() {
+		if (getSysUser() != null && userPid == null) {
+			userPid = getSysUser().getUserPid();
+		}
 		return userPid;
 	}
 
@@ -111,6 +114,9 @@ public class SysUserVO {
 	}
 
 	public SysSection getSysSection() {
+		if (getSysUser() !=  null && sysSection == null) {
+			sysSection = getSysUser().getSysSection();
+		}
 		return sysSection;
 	}
 
@@ -119,6 +125,9 @@ public class SysUserVO {
 	}
 
 	public String getUserName() {
+		if (getSysUser() != null && userName == null) {
+			userName = getSysUser().getUserName();
+		}
 		return userName;
 	}
 
@@ -127,6 +136,9 @@ public class SysUserVO {
 	}
 
 	public String getPassword() {
+		if (getSysUser() != null && password == null) {
+			password = getSysUser().getPassword();
+		}
 		return password;
 	}
 
@@ -135,6 +147,9 @@ public class SysUserVO {
 	}
 
 	public String getUserState() {
+		if (getSysUser() != null && userState == null) {
+			userState = getSysUser().getUserState();
+		}
 		return userState;
 	}
 
@@ -143,6 +158,9 @@ public class SysUserVO {
 	}
 
 	public String getFastnessTel() {
+		if (getSysUser() != null && fastnessTel == null) {
+			fastnessTel = getSysUser().getFastnessTel();
+		}
 		return fastnessTel;
 	}
 
@@ -151,6 +169,9 @@ public class SysUserVO {
 	}
 
 	public String getMobileTel() {
+		if (getSysUser() != null && mobileTel == null) {
+			mobileTel = getSysUser().getMobileTel();
+		}
 		return mobileTel;
 	}
 
@@ -159,6 +180,9 @@ public class SysUserVO {
 	}
 
 	public String getIpArea() {
+		if (getSysUser() != null && ipArea == null) {
+			ipArea = getSysUser().getIpArea();
+		}
 		return ipArea;
 	}
 
@@ -167,6 +191,9 @@ public class SysUserVO {
 	}
 
 	public String getEmail() {
+		if (getSysUser() != null && email == null) {
+			email = getSysUser().getEmail();
+		}
 		return email;
 	}
 
@@ -175,6 +202,9 @@ public class SysUserVO {
 	}
 
 	public String getEmailPassword() {
+		if (getSysUser() != null && emailPassword == null) {
+			emailPassword = getSysUser().getEmailPassword();
+		}
 		return emailPassword;
 	}
 
@@ -183,6 +213,9 @@ public class SysUserVO {
 	}
 
 	public String getEmailFooter() {
+		if (getSysUser() != null && emailFooter == null) {
+			emailFooter = getSysUser().getEmailFooter();
+		}
 		return emailFooter;
 	}
 
@@ -191,6 +224,9 @@ public class SysUserVO {
 	}
 
 	public String getRemark() {
+		if (getSysUser() != null && remark == null) {
+			remark = getSysUser().getRemark();
+		}
 		return remark;
 	}
 

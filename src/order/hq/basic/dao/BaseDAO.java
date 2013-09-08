@@ -3,6 +3,8 @@ package order.hq.basic.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import order.hq.basic.database.entity.SysSection;
+
 public interface BaseDAO {
 	
 	public void save(Object obj);

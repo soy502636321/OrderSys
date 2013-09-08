@@ -90,27 +90,41 @@
 			<result name="query">/jsp/system/organzation/organzationQuery.jsp</result>
 			<result name="*">/jsp/system/organzation/organzation.jsp</result>
 		</action>
-		
-	
-	<!-- 	
-		<action name="*Action" class="order.hq.web.action.{1}Action">
-			<result name="query">/jsp/system/{1}/{1}Query.jsp</result>
-			<result name="*">/jsp/system/{1}/{1}.jsp</result>
-		</action>
-	-->	
 	</package>
 	
-	
-	<package name="userModel" extends="struts-default" namespace="/user">
-	
-		<action name="userAction" class="order.hq.web.action.UserAction">
-			<result name="query">/jsp/system/user/userQuery.jsp</result>
-			<result name="*">/jsp/system/user/user.jsp</result>
+	<!-- 订单模块 -->
+	<package name="sysOrderModel" extends="iterceptor" namespace="/sysOrder">
+		<action name="publicInitateSysOrderAction" class="order.hq.web.action.sysorder.state.PublicInitateSysOrderAction">
+			<result name="query">/jsp/SysOrder/Public_Initate_SysOrder_Query.jsp</result>
+		</action>
+		<action name="publicAcceptSysOrderAction" class="order.hq.web.action.sysorder.state.PublicAcceptSysOrderAction">
+			<result name="query">/jsp/SysOrder/Public_Accept_SysOrder_Query.jsp</result>
+		</action>
+		<action name="publicTurnoverSysOrderAction" class="order.hq.web.action.sysorder.state.PublicTurnoverSysOrderAction">
+			<result name="query">/jsp/SysOrder/Public_Turnover_SysOrder_Query.jsp</result>
+		</action>
+		<action name="publicCompleteSysOrderAction" class="order.hq.web.action.sysorder.state.PublicCompleteSysOrderAction">
+			<result name="query">/jsp/SysOrder/Public_Complete_SysOrder_Query.jsp</result>
+		</action>
+		<action name="publicCancelSysOrderAction" class="order.hq.web.action.sysorder.state.PublicCancelSysOrderAction">
+			<result name="query">/jsp/SysOrder/Public_Cancel_SysOrder_Query.jsp</result>
 		</action>
 		
+		<action name="privateInitateSysOrderAction" class="order.hq.web.action.sysorder.state.PrivateInitateSysOrderAction">
+			<result name="query">/jsp/SysOrder/Private_Initate_SysOrder_Query.jsp</result>
+		</action>
+		<action name="privateAcceptSysOrderAction" class="order.hq.web.action.sysorder.state.PrivateAcceptSysOrderAction">
+			<result name="query">/jsp/SysOrder/Private_Accept_SysOrder_Query.jsp</result>
+		</action>
+		<action name="privateTurnoverSysOrderAction" class="order.hq.web.action.sysorder.state.PrivateTurnoverSysOrderAction">
+			<result name="query">/jsp/SysOrder/Private_Turnover_SysOrder_Query.jsp</result>
+		</action>
+		<action name="privateCompleteSysOrderAction" class="order.hq.web.action.sysorder.state.PrivateCompleteSysOrderAction">
+			<result name="query">/jsp/SysOrder/Private_Complete_SysOrder_Query.jsp</result>
+		</action>
+		<action name="privateCancelSysOrderAction" class="order.hq.web.action.sysorder.state.PrivateCancelSysOrderAction">
+			<result name="query">/jsp/SysOrder/Private_Cancel_SysOrder_Query.jsp</result>
+		</action>
 	</package>
-	
-	
-	
 
 </struts>    
