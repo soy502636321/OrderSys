@@ -12,6 +12,7 @@ public class BaseTranslatedFile implements Serializable {
 	private String translatedFileLocation;
 
 	private SysOrder sysOrder;
+	private SysFeedback sysFeedback;
 
 	public String getTranslatedFilePid() {
 		return translatedFilePid;
@@ -57,4 +58,13 @@ public class BaseTranslatedFile implements Serializable {
 		this.sysOrder = sysOrder;
 	}
 
+	public SysFeedback getSysFeedback() {
+		return sysFeedback;
+	}
+
+	public void setSysFeedback(SysFeedback sysFeedback) {
+		this.sysFeedback = sysFeedback;
+	}
+
+	
 }

@@ -21,14 +21,8 @@
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.ztree.core-3.5.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.ztree.excheck-3.5.js"></script>
 	
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/zTreeStyle.css">
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/displayTag.css">
-	
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/zTreeStyle.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/displayTag.css" />
+	<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/public.css" />
   </head>
-  
-  <%
-	int pageSize = GlobalUtil.getPageSize();
-  %>
-  
-
 </html>

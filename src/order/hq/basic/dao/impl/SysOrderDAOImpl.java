@@ -32,8 +32,8 @@ public class SysOrderDAOImpl extends AbstractBaseDAO implements SysOrderDAO {
 			return getHibernateTemplate().loadAll(SysOrder.class);
 		} catch (DataAccessException e) {
 			log.error("返回所有的订单失败", e);
+			throw e;
 		}
-		return null;
 	}
 	
 	@Override
@@ -76,8 +76,8 @@ public class SysOrderDAOImpl extends AbstractBaseDAO implements SysOrderDAO {
 			});
 		} catch (DataAccessException e) {
 			log.error("查询订单集合失败", e);
+			throw e;
 		}
-		return null;
 	}
 	
 	@Override

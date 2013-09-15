@@ -15,8 +15,10 @@ public class SysOrder {
 	private Date operTime = new Date(); // 订单增加时间
 	private SysUser operUser; // 订单增加人
 
+	private SysShow sysShow;
 	private Set masterFiles = new HashSet(0);
 	private Set translatedFiles = new HashSet(0);
+	private Set feedbacks = new HashSet(0);
 
 	// 虚拟字段
 	private int baseMasterFileCount;
@@ -109,6 +111,22 @@ public class SysOrder {
 
 	public void setTranslatedFiles(Set translatedFiles) {
 		this.translatedFiles = translatedFiles;
+	}
+
+	public SysShow getSysShow() {
+		return sysShow;
+	}
+
+	public void setSysShow(SysShow sysShow) {
+		this.sysShow = sysShow;
+	}
+
+	public Set getFeedbacks() {
+		return feedbacks;
+	}
+
+	public void setFeedbacks(Set feedbacks) {
+		this.feedbacks = feedbacks;
 	}
 
 }

@@ -50,4 +50,14 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 	<bean id="baseTranslatedFileDAO" class="order.hq.basic.dao.impl.BaseTranslatedFileDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<!-- 反馈状态 -->
+	<bean id="configSysFeedbackStateDAO" class="order.hq.basic.dao.impl.ConfigSysFeedbackStateDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- 反馈管理、查看 -->
+	<bean id="sysFeedbackDAO" class="order.hq.basic.dao.impl.SysFeedbackDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 </beans>

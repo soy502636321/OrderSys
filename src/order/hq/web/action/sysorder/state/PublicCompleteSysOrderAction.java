@@ -14,7 +14,7 @@ public class PublicCompleteSysOrderAction extends SysOrderAction {
 	public String query() {
 		log.debug("ACTION:查询已完成的订单");
 		PaginatedList paginatedList = new PaginatedList(getPage());
-		paginatedList = getSysOrderService().querySysOrder(paginatedList, getSysOrderVO(), getConfigSysOrderStateService().findComplete(), null);
+		paginatedList = getSysOrderService().querySysOrder(paginatedList, getSysOrderVO(), getComplete(), null);
 		setPaginatedList(paginatedList);
 		return ForwardUtil.FORWARD_QUERY_PAGE;
 	}

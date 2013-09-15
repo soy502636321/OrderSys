@@ -13,6 +13,7 @@ import order.hq.basic.vo.SysUserVO;
 import order.hq.util.ForwardUtil;
 import order.hq.util.GlobalUtil;
 import order.hq.util.PasswordControl;
+import order.hq.util.StringUtil;
 import order.hq.web.service.SysUserService;
 
 import org.slf4j.Logger;
@@ -50,7 +51,7 @@ public class LoginAction extends BaseAction {
 			return ForwardUtil.FORWARD_FAIL;
 		}
 
-		if (isNull(loginSysUserVO.getUserState())
+		if (StringUtil.isNull(loginSysUserVO.getUserState())
 				|| !loginSysUserVO.getUserState().equals(GlobalUtil.isNormal)) {
 			addActionError("该用户已被禁用或未启用！");
 			return ForwardUtil.FORWARD_FAIL;

@@ -25,9 +25,11 @@ public class SysUserVO {
 
 	private String userPid;
 	private SysSection sysSection;
+	private String sysSectionPid;
 	private String userName;
 	private String password;
 	private String userState;
+	private String custNo;
 	private String fastnessTel;
 	private String mobileTel;
 	private String ipArea;
@@ -114,7 +116,7 @@ public class SysUserVO {
 	}
 
 	public SysSection getSysSection() {
-		if (getSysUser() !=  null && sysSection == null) {
+		if (getSysUser() != null && sysSection == null) {
 			sysSection = getSysUser().getSysSection();
 		}
 		return sysSection;
@@ -234,4 +236,27 @@ public class SysUserVO {
 		this.remark = remark;
 	}
 
+	public String getSysSectionPid() {
+		if (getSysSection() != null && sysSectionPid == null) {
+			sysSectionPid = getSysSection().getSectionPid();
+		}
+		return sysSectionPid;
+	}
+
+	public void setSysSectionPid(String sysSectionPid) {
+		this.sysSectionPid = sysSectionPid;
+	}
+
+	public String getCustNo() {
+		if (getSysUser() != null && custNo == null) {
+			custNo = getSysUser().getCustNo();
+		}
+		return custNo;
+	}
+
+	public void setCustNo(String custNo) {
+		this.custNo = custNo;
+	}
+
+	
 }

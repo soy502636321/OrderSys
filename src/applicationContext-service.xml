@@ -9,6 +9,7 @@
 	<bean id="sysUserService" class="order.hq.web.service.impl.SysUserServiceImp">
 		<property name="sysUserDAO" ref="sysUserDAO" />
 		<property name="sysFunctionDAO" ref="sysFunctionDAO" />
+		<property name="sysSectionDAO" ref="sysSectionDAO" />
 	</bean>
 	
 	<!-- 订单管理服务 -->
@@ -19,5 +20,20 @@
 	<!-- 订单状态服务 -->
 	<bean id="configSysOrderStateService" class="order.hq.web.service.impl.ConfigSysOrderStateServiceImpl">
 		<property name="configSysOrderStateDAO" ref="configSysOrderStateDAO" />
+	</bean>
+	
+	<!-- 角色管理服务 -->
+	<bean id="sysSectionService" class="order.hq.web.service.impl.SysSectionServiceImpl">
+		<property name="sysSectionDAO" ref="sysSectionDAO" />
+	</bean>
+	
+	<!-- 反馈状态服务 -->
+	<bean id="configSysFeedbackStateService" class="order.hq.web.service.impl.ConfigSysFeedbackStateServiceImpl">
+		<property name="configSysFeedbackStateDAO" ref="configSysFeedbackStateDAO" />
+	</bean>
+	
+	<!-- 反馈服务 -->
+	<bean id="sysFeedbackService" class="order.hq.web.service.impl.SysFeedbackServiceImpl">
+		<property name="sysFeedbackDAO" ref="sysFeedbackDAO" />
 	</bean>
 </beans>

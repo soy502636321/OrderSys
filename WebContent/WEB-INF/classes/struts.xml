@@ -70,6 +70,7 @@
 		</action>
 	</package>
 	
+	<!-- 
 	<package name="systemModel" extends="iterceptor" namespace="/system">
 	
 		<action name="sectionAction" class="order.hq.web.action.SectionAction">
@@ -91,6 +92,7 @@
 			<result name="*">/jsp/system/organzation/organzation.jsp</result>
 		</action>
 	</package>
+	-->
 	
 	<!-- 订单模块 -->
 	<package name="sysOrderModel" extends="iterceptor" namespace="/sysOrder">
@@ -124,6 +126,31 @@
 		</action>
 		<action name="privateCancelSysOrderAction" class="order.hq.web.action.sysorder.state.PrivateCancelSysOrderAction">
 			<result name="query">/jsp/SysOrder/Private_Cancel_SysOrder_Query.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 反馈模块 -->
+	<package name="sysFeedbackModel" extends="iterceptor" namespace="/sysFeedback">
+		<action name="sysFeedbackAction" class="order.hq.web.action.sysfeedback.SysFeedbackAction">
+		</action>
+		
+		<action name="publicInitateSysFeedbackAction" class="order.hq.web.action.sysfeedback.state.PublicInitateSysFeedbackAction">
+			<result name="query">/jsp/SysFeedback/Public_Initate_SysFeedback_Query.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 系统管理模块 -->
+	<package name="systemModel" extends="iterceptor" namespace="/system">
+		<!-- 用户管理 -->
+		<action name="sysUserAction" class="order.hq.web.action.system.SysUserAction">
+			<result name="query">/jsp/System/SysUser/SysUser_Query.jsp</result>
+			<result name="add">/jsp/System/SysUser/SysUser_Add.jsp</result>
+			<result name="edit">/jsp/System/SysUser/SysUser_Update.jsp</result>
+		</action>
+		
+		<!-- 语种管理 -->
+		<action name="baseLanguageAction" class="order.hq.web.action.system.BaseLanguageAction">
+			<result name="query">/jsp/System/BaseLanguage/BaseLanguage_Query.jsp</result>
 		</action>
 	</package>
 

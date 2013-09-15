@@ -25,5 +25,9 @@
 		<many-to-one name="sysOrder" class="order.hq.basic.database.entity.SysOrder" not-null="true">
 			<column name="ORDER_PID" length="50" />
 		</many-to-one>
+		
+		<many-to-one name="sysFeedback" class="order.hq.basic.database.entity.SysFeedback">
+			<column name="FEEDBACK_PID" length="50" />
+		</many-to-one>
 	</class>
 </hibernate-mapping>

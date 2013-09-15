@@ -38,18 +38,29 @@
 			<column name="OPER_USER_PID" length="50" />
 		</many-to-one>
 		
-		<set name="masterFiles" table="SYS_ORDER_TO_MASTERFILE">
+		<many-to-one name="sysShow" class="order.hq.basic.database.entity.SysShow">
+			<column name="SHOW_PID" length="50" unique="true"/>
+		</many-to-one>
+		
+		<set name="masterFiles" fetch="select" inverse="true">
 			<key not-null="true">
 				<column name="ORDER_PID" length="50" />
 			</key>
-			<many-to-many column="MASTER_FILE_PID" class="order.hq.basic.database.entity.BaseMasterFile" />
+			<one-to-many class="order.hq.basic.database.entity.BaseMasterFile" />
 		</set>
 		
-		<set name="translatedFiles" table="SYS_ORDER_TO_TRANSLATED">
+		<set name="translatedFiles" fetch="select" inverse="true">
 			<key not-null="true">
 				<column name="ORDER_PID" length="50" />
 			</key>
-			<many-to-many column="TRANSLATED_FILE_PID" class="order.hq.basic.database.entity.BaseTranslatedFile" />
+			<one-to-many class="order.hq.basic.database.entity.BaseTranslatedFile"/>
+		</set>
+		
+		<set name="feedbacks" fetch="select" inverse="true">
+			<key not-null="true">
+				<column name="ORDER_PID" length="50" />
+			</key>
+			<one-to-many class="order.hq.basic.database.entity.SysFeedback" />
 		</set>
 		
 		<!-- 虚拟列 -->

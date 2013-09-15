@@ -15,6 +15,7 @@ public class PublicInitateSysOrderAction extends SysOrderAction {
 		PaginatedList paginatedList = new PaginatedList(getPage());
 		paginatedList = getSysOrderService().querySysOrder(paginatedList, getSysOrderVO(), getConfigSysOrderStateService().findInitate(), null);
 		setPaginatedList(paginatedList);
+		System.out.println("验证状态是否为空:" + getCancel());
 		return ForwardUtil.FORWARD_QUERY_PAGE;
 	}
 }

@@ -13,6 +13,7 @@ public class SysUser implements java.io.Serializable {
 	private String userName;
 	private String password;
 	private String userState;
+	private String custNo;
 	private String fastnessTel;
 	private String mobileTel;
 	private String ipArea;
@@ -123,6 +124,14 @@ public class SysUser implements java.io.Serializable {
 
 	public void setUserPid(String userPid) {
 		this.userPid = userPid;
+	}
+
+	public String getCustNo() {
+		return custNo;
+	}
+
+	public void setCustNo(String custNo) {
+		this.custNo = custNo;
 	}
 
 }

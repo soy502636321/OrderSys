@@ -26,13 +26,12 @@ public class SysFunctionDAOImplTest {
 	@Test
 	public void testSave() {
 		SysFunctionDAO sysFunctionDAO = (SysFunctionDAO) factory.getBean("sysFunctionDAO");
-		SysFunction sysFunction = (SysFunction) sysFunctionDAO.findByPK("ff80808140fc52030140fc5215420001", SysFunction.class);
+		SysFunction sysFunction = (SysFunction) sysFunctionDAO.findByPK("8a80c97b4120bee5014120befc9d0001", SysFunction.class);
 		SysFunction function = new SysFunction();
-		function.setFunctionName("查看指示");
-		function.setFunctionUrl("publicInitateSysOrderAction!findSysShow");
-		function.setFunctionType(GlobalUtil.isBtn);
+		function.setFunctionName("处理完");
+		function.setFunctionType(GlobalUtil.isMenu);
+		function.setRemark("反馈管理》处理完");
 		function.setParent(sysFunction);
-		function.setRemark("订单管理》新订单》查看指示");
 		
 		sysFunctionDAO.save(function);
 	}

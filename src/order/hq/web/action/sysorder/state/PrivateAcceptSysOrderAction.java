@@ -14,7 +14,7 @@ public class PrivateAcceptSysOrderAction extends SysOrderAction {
 	public String query() {
 		log.debug("ACTION:查询个人的已接受订单");
 		PaginatedList paginatedList = new PaginatedList(getPage());
-		paginatedList = getSysOrderService().querySysOrder(paginatedList, getSysOrderVO(), getConfigSysOrderStateService().findAccept(), getLoginVO());
+		paginatedList = getSysOrderService().querySysOrder(paginatedList, getSysOrderVO(), getAccept(), getLoginVO());
 		setPaginatedList(paginatedList);
 		return ForwardUtil.FORWARD_QUERY_PAGE;
 	}

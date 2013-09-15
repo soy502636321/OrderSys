@@ -14,7 +14,7 @@ public class PrivateCancelSysOrderAction extends SysOrderAction {
 	public String query() {
 		log.debug("ACTION:查询个人的已作废订单");
 		PaginatedList paginatedList = new PaginatedList(getPage());
-		paginatedList = getSysOrderService().querySysOrder(paginatedList, getSysOrderVO(), getConfigSysOrderStateService().findCancel(), getLoginVO());
+		paginatedList = getSysOrderService().querySysOrder(paginatedList, getSysOrderVO(), getCancel(), getLoginVO());
 		setPaginatedList(paginatedList);
 		return ForwardUtil.FORWARD_QUERY_PAGE;
 	}

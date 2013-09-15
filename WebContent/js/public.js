@@ -1,9 +1,3 @@
-function winOpen1(src,height,width){
-	var sFeatures = "dialogHeight:"+height+"px;dialogWidth:"+width+"px;resizable:no;help:no;status:no;scroll:no;";
-	var result = window.showModalDialog(src, window, sFeatures);
-	return result;
-
-}
 function winOpen(sName, sUrl,iWidth,iHeight,bCentre) {
 	var sFeatures;
 	var iTop,iLeft;
@@ -167,11 +161,11 @@ function moreSelect(){
 function singleSelectCheckBox(checkboxName){
     var strIds = getCbValue(document.all(checkboxName), 1);
     if ( strIds == "" ) {
-    	alert("Please select record!");
+    	alert("请选择一条记录!");
     	return false;
     }
 	if ( strIds.indexOf(",") != -1 ) {
-		alert("There is noly one record can be selected at a time!");
+		alert("最多只能选择一条记录!");
 		return false;
 	}
 	return true;
@@ -212,4 +206,28 @@ function windowOpenShowModel(obj,width,height){
         dialogHeight="dialogHeight:"+height+"px;";
     }
    return window.showModalDialog("jsp/showModelCommonFrame.jsp?distinctUrlObject="+obj,window,dialogWidth+ dialogHeight);
+}
+
+function powerSingleSelect(obj, location) {
+	if (obj) {
+		form = $(obj).parents('form:first');
+		if (location) {
+			$(form).attr('target', '_blank');
+		} else {
+			$(form).attr('target', '');
+		}
+	}
+	return singleSelectCheckBox("cbId");
+}
+
+function powerMoreSelect(obj, location) {
+	if (obj) {
+		form = $(obj).parents('form:first');
+		if (location) {
+			$(form).attr('target', '_blank');
+		} else {
+			$(form).attr('target', '');
+		}
+	}
+	return moreSelectCheckBox("cbId");
 }

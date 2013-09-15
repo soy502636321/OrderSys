@@ -3,6 +3,7 @@ package order.hq.web.action.sysorder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import order.hq.basic.database.entity.ConfigSysOrderState;
 import order.hq.basic.vo.SysOrderVO;
 import order.hq.util.ForwardUtil;
 import order.hq.util.PaginatedList;
@@ -18,6 +19,13 @@ public class SysOrderAction extends BaseAction {
 	private SysOrderService sysOrderService;
 	private ConfigSysOrderStateService configSysOrderStateService;
 
+	// 订单状态
+	private ConfigSysOrderState cancel;
+	private ConfigSysOrderState complete;
+	private ConfigSysOrderState turnover;
+	private ConfigSysOrderState accept;
+	private ConfigSysOrderState initate;
+
 	// 属性
 	private PaginatedList paginatedList;
 	private int page;
@@ -31,7 +39,7 @@ public class SysOrderAction extends BaseAction {
 		setPaginatedList(paginatedList);
 		return ForwardUtil.FORWARD_QUERY_PAGE;
 	}
-	
+
 	public String findSysShow() {
 		log.debug("ACTION:查看订单的指示");
 		return null;
@@ -76,6 +84,46 @@ public class SysOrderAction extends BaseAction {
 	public void setConfigSysOrderStateService(
 			ConfigSysOrderStateService configSysOrderStateService) {
 		this.configSysOrderStateService = configSysOrderStateService;
+	}
+
+	public ConfigSysOrderState getCancel() {
+		return cancel;
+	}
+
+	public void setCancel(ConfigSysOrderState cancel) {
+		this.cancel = cancel;
+	}
+
+	public ConfigSysOrderState getComplete() {
+		return complete;
+	}
+
+	public void setComplete(ConfigSysOrderState complete) {
+		this.complete = complete;
+	}
+
+	public ConfigSysOrderState getTurnover() {
+		return turnover;
+	}
+
+	public void setTurnover(ConfigSysOrderState turnover) {
+		this.turnover = turnover;
+	}
+
+	public ConfigSysOrderState getAccept() {
+		return accept;
+	}
+
+	public void setAccept(ConfigSysOrderState accept) {
+		this.accept = accept;
+	}
+
+	public ConfigSysOrderState getInitate() {
+		return initate;
+	}
+
+	public void setInitate(ConfigSysOrderState initate) {
+		this.initate = initate;
 	}
 
 }

@@ -14,7 +14,7 @@ public class PrivateTurnoverSysOrderAction extends SysOrderAction {
 	public String query() {
 		log.debug("ACTION:查询个人的已成交订单");
 		PaginatedList paginatedList = new PaginatedList(getPage());
-		paginatedList = getSysOrderService().querySysOrder(paginatedList, getSysOrderVO(), getConfigSysOrderStateService().findTurnover(), getLoginVO());
+		paginatedList = getSysOrderService().querySysOrder(paginatedList, getSysOrderVO(), getTurnover(), getLoginVO());
 		setPaginatedList(paginatedList);
 		return ForwardUtil.FORWARD_QUERY_PAGE;
 	}

@@ -8,9 +8,9 @@ import java.util.Set;
  */
 
 public class SysSection implements java.io.Serializable {
-
+	private static final long serialVersionUID = 1L;
 	// Fields
-
+	
 	private String sectionPid;
 	private String sectionName;
 	private String remark;

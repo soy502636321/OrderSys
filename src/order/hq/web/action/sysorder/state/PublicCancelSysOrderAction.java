@@ -14,7 +14,7 @@ public class PublicCancelSysOrderAction extends SysOrderAction {
 	public String query() {
 		log.debug("ACTION:查询作废的订单");
 		PaginatedList paginatedList = new PaginatedList(getPage());
-		paginatedList = getSysOrderService().querySysOrder(paginatedList, getSysOrderVO(), getConfigSysOrderStateService().findCancel(), null);
+		paginatedList = getSysOrderService().querySysOrder(paginatedList, getSysOrderVO(), getCancel(), null);
 		setPaginatedList(paginatedList);
 		return ForwardUtil.FORWARD_QUERY_PAGE;
 	}

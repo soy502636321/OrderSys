@@ -16,7 +16,7 @@ public class PrivateInitateSysOrderAction extends SysOrderAction {
 	public String query() {
 		log.debug("ACTION:查询个人的新订单");
 		PaginatedList paginatedList = new PaginatedList(getPage());
-		paginatedList = getSysOrderService().querySysOrder(paginatedList, getSysOrderVO(), getConfigSysOrderStateService().findInitate(), getLoginVO());
+		paginatedList = getSysOrderService().querySysOrder(paginatedList, getSysOrderVO(), getInitate(), getLoginVO());
 		setPaginatedList(paginatedList);
 		return ForwardUtil.FORWARD_QUERY_PAGE;
 	}

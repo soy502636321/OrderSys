@@ -21,6 +21,9 @@
         <property name="userState" type="java.lang.String">
             <column name="USER_STATE" length="30" />
         </property>
+        <property name="custNo" type="string">
+        	<column name="CUST_NO" length="100" />
+        </property>
         <property name="fastnessTel" type="java.lang.String">
             <column name="FASTNESS_TEL" length="50" />
         </property>
@@ -40,7 +43,7 @@
             <column name="EMAIL_FOOTER" />
         </property>
         <property name="remark" type="java.lang.String">
-            <column name="REMARK" length="100" />
+            <column name="REMARK" length="5000" />
         </property>
     </class>
 </hibernate-mapping>
