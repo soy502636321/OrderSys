@@ -3,65 +3,70 @@
 <struts>
 
 	<!-- struts.ui.theme=simple可以解决struts2标签自动换行问题，即不再自动被添加进table标签中 -->
-	<constant name="struts.ui.theme" value="simple" /> 
-	<constant name="struts.ui.templateDir" value="template" /> 
-	<constant name="struts.ui.templateSuffix" value="ftl" /> 
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.ui.templateDir" value="template" />
+	<constant name="struts.ui.templateSuffix" value="ftl" />
 
 	<!-- 处理编码乱码问题 -->
-	<!-- <constant name="struts.i18n.encoding" value="gbk"></constant>-->
-	<constant name="struts.i18n.encoding" value="UTF-8" />	
-	
+	<!-- <constant name="struts.i18n.encoding" value="gbk"></constant> -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+
 	<constant name="struts.objectFactory" value="spring"></constant>
-	
-	
+
+
 	<constant name="struts.devMode" value="false" />
-	
-	
-	
+
+
+
 	<!-- session超时拦截器 -->
 	<package name="iterceptor" namespace="/" extends="struts-default">
 		<interceptors>
-            <!-- 自定义拦截器 -->
-            <interceptor name="permission" class="order.hq.basic.iterceptor.SessionIterceptor" />
-            <!-- 配制默许的拦截器到拦截器栈 -->
-            <interceptor-stack name="permissionStack">
-                <!-- 此处先后顺序没影响-->
-                <interceptor-ref name="permission" />
-                <interceptor-ref name="defaultStack" />
-                
-                <!-- 防止重复提交 -->
-                <!--<interceptor-ref name="token" /> -->
-            </interceptor-stack>
-        </interceptors>
-        <!-- 配置默认的拦截器 -->
-        <default-interceptor-ref name="permissionStack" />
-        
-        <!-- 配置默认的类 -->
-        <default-class-ref class="com.opensymphony.xwork2.ActionSupport"></default-class-ref>
-        
-        <!-- 全局变量,超时返回登录页面 -->
-        <global-results>
-            <result name="loginPage">/include/session.jsp</result>
-            <result name="error">error.jsp</result>
-            <result name="invalid.token">error.jsp</result>
-        </global-results>
-        
-        		
+			<!-- 自定义拦截器 -->
+			<interceptor name="permission"
+				class="order.hq.basic.iterceptor.SessionIterceptor" />
+			<!-- 配制默许的拦截器到拦截器栈 -->
+			<interceptor-stack name="permissionStack">
+				<!-- 此处先后顺序没影响 -->
+				<interceptor-ref name="permission" />
+				<interceptor-ref name="defaultStack" />
+
+				<!-- 防止重复提交 -->
+				<!--<interceptor-ref name="token" /> -->
+			</interceptor-stack>
+		</interceptors>
+		<!-- 配置默认的拦截器 -->
+		<default-interceptor-ref name="permissionStack" />
+
+		<!-- 配置默认的类 -->
+		<default-class-ref class="com.opensymphony.xwork2.ActionSupport"></default-class-ref>
+
+		<!-- 全局变量,超时返回登录页面 -->
+		<global-results>
+			<result name="loginPage">/include/session.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalid.token">error.jsp</result>
+			<result name="baseMasterFile_Query">/jsp/BaseMasterFile/BaseMasterFile_Query.jsp</result>
+			<result name="baseTranslatedFile_Query">/jsp/BaseTranslatedFile/BaseTranslatedFile_Query.jsp</result>
+			<result name="sysOrder_Show">/jsp/SysOrder/SysOrder_Show.jsp</result>
+			<result name="sysShow_Show">/jsp/SysShow/SysShow_Show.jsp</result>
+		</global-results>
+
+
 		<global-exception-mappings>
 			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
 		</global-exception-mappings>
-		
- 	</package>
- 
- 	<!-- session超时不需要返回登录页面的配置文件 -->
-	<package  name="noIterceptor" namespace="/" extends="struts-default">
+
+	</package>
+
+	<!-- session超时不需要返回登录页面的配置文件 -->
+	<package name="noIterceptor" namespace="/" extends="struts-default">
 	</package>
 	<!-- session超时返回登录页面的配置文件 -->
 	<package name="nscloud" namespace="/" extends="iterceptor">
 	</package>
-	
-	
-	
+
+
+
 	<package name="loginModel" extends="struts-default" namespace="/login">
 		<action name="loginAction" class="order.hq.web.action.LoginAction">
 			<result name="success">/main.jsp</result>
@@ -69,76 +74,102 @@
 			<result name="fail">/login.jsp</result>
 		</action>
 	</package>
-	
-	<!-- 
-	<package name="systemModel" extends="iterceptor" namespace="/system">
-	
-		<action name="sectionAction" class="order.hq.web.action.SectionAction">
-			<result name="query">/jsp/system/section/sectionQuery.jsp</result>
-			<result name="editFunction">/jsp/system/section/editFunction.jsp</result>
-			<result name="editFunctionTree">/jsp/system/section/editFunctionTree.jsp</result>
-			<result name="editFunctionZTree">/jsp/system/section/editFunctionZTree.jsp</result>
-			<result name="editOrganzation">/jsp/system/section/editOrganzation.jsp</result>
-			<result name="*">/jsp/system/section/section.jsp</result>
-		</action>
-		
-		<action name="functionAction" class="order.hq.web.action.FunctionAction">
-			<result name="query">/jsp/system/function/functionQuery.jsp</result>
-			<result name="*">/jsp/system/function/function.jsp</result>
-		</action>
-		
-		<action name="organzationAction" class="order.hq.web.action.OrganzationAction">
-			<result name="query">/jsp/system/organzation/organzationQuery.jsp</result>
-			<result name="*">/jsp/system/organzation/organzation.jsp</result>
-		</action>
-	</package>
-	-->
-	
+
+	<!-- <package name="systemModel" extends="iterceptor" namespace="/system"> 
+		<action name="sectionAction" class="order.hq.web.action.SectionAction"> <result 
+		name="query">/jsp/system/section/sectionQuery.jsp</result> <result name="editFunction">/jsp/system/section/editFunction.jsp</result> 
+		<result name="editFunctionTree">/jsp/system/section/editFunctionTree.jsp</result> 
+		<result name="editFunctionZTree">/jsp/system/section/editFunctionZTree.jsp</result> 
+		<result name="editOrganzation">/jsp/system/section/editOrganzation.jsp</result> 
+		<result name="*">/jsp/system/section/section.jsp</result> </action> <action 
+		name="functionAction" class="order.hq.web.action.FunctionAction"> <result 
+		name="query">/jsp/system/function/functionQuery.jsp</result> <result name="*">/jsp/system/function/function.jsp</result> 
+		</action> <action name="organzationAction" class="order.hq.web.action.OrganzationAction"> 
+		<result name="query">/jsp/system/organzation/organzationQuery.jsp</result> 
+		<result name="*">/jsp/system/organzation/organzation.jsp</result> </action> 
+		</package> -->
+
 	<!-- 订单模块 -->
 	<package name="sysOrderModel" extends="iterceptor" namespace="/sysOrder">
-		<action name="publicInitateSysOrderAction" class="order.hq.web.action.sysorder.state.PublicInitateSysOrderAction">
-			<result name="query">/jsp/SysOrder/Public_Initate_SysOrder_Query.jsp</result>
+		<action name="publicInitateSysOrderAction"
+			class="order.hq.web.action.sysorder.state.PublicInitateSysOrderAction">
+			<result name="query">/jsp/SysOrder/Public_Initate_SysOrder_Query.jsp
+			</result>
 		</action>
-		<action name="publicAcceptSysOrderAction" class="order.hq.web.action.sysorder.state.PublicAcceptSysOrderAction">
-			<result name="query">/jsp/SysOrder/Public_Accept_SysOrder_Query.jsp</result>
+		<action name="publicAcceptSysOrderAction"
+			class="order.hq.web.action.sysorder.state.PublicAcceptSysOrderAction">
+			<result name="query">/jsp/SysOrder/Public_Accept_SysOrder_Query.jsp
+			</result>
 		</action>
-		<action name="publicTurnoverSysOrderAction" class="order.hq.web.action.sysorder.state.PublicTurnoverSysOrderAction">
-			<result name="query">/jsp/SysOrder/Public_Turnover_SysOrder_Query.jsp</result>
+		<action name="publicTurnoverSysOrderAction"
+			class="order.hq.web.action.sysorder.state.PublicTurnoverSysOrderAction">
+			<result name="query">/jsp/SysOrder/Public_Turnover_SysOrder_Query.jsp
+			</result>
 		</action>
-		<action name="publicCompleteSysOrderAction" class="order.hq.web.action.sysorder.state.PublicCompleteSysOrderAction">
-			<result name="query">/jsp/SysOrder/Public_Complete_SysOrder_Query.jsp</result>
+		<action name="publicCompleteSysOrderAction"
+			class="order.hq.web.action.sysorder.state.PublicCompleteSysOrderAction">
+			<result name="query">/jsp/SysOrder/Public_Complete_SysOrder_Query.jsp
+			</result>
 		</action>
-		<action name="publicCancelSysOrderAction" class="order.hq.web.action.sysorder.state.PublicCancelSysOrderAction">
-			<result name="query">/jsp/SysOrder/Public_Cancel_SysOrder_Query.jsp</result>
+		<action name="publicCancelSysOrderAction"
+			class="order.hq.web.action.sysorder.state.PublicCancelSysOrderAction">
+			<result name="query">/jsp/SysOrder/Public_Cancel_SysOrder_Query.jsp
+			</result>
 		</action>
-		
-		<action name="privateInitateSysOrderAction" class="order.hq.web.action.sysorder.state.PrivateInitateSysOrderAction">
-			<result name="query">/jsp/SysOrder/Private_Initate_SysOrder_Query.jsp</result>
+
+		<action name="privateInitateSysOrderAction"
+			class="order.hq.web.action.sysorder.state.PrivateInitateSysOrderAction">
+			<result name="query">/jsp/SysOrder/Private_Initate_SysOrder_Query.jsp
+			</result>
 		</action>
-		<action name="privateAcceptSysOrderAction" class="order.hq.web.action.sysorder.state.PrivateAcceptSysOrderAction">
-			<result name="query">/jsp/SysOrder/Private_Accept_SysOrder_Query.jsp</result>
+		<action name="privateAcceptSysOrderAction"
+			class="order.hq.web.action.sysorder.state.PrivateAcceptSysOrderAction">
+			<result name="query">/jsp/SysOrder/Private_Accept_SysOrder_Query.jsp
+			</result>
 		</action>
-		<action name="privateTurnoverSysOrderAction" class="order.hq.web.action.sysorder.state.PrivateTurnoverSysOrderAction">
-			<result name="query">/jsp/SysOrder/Private_Turnover_SysOrder_Query.jsp</result>
+		<action name="privateTurnoverSysOrderAction"
+			class="order.hq.web.action.sysorder.state.PrivateTurnoverSysOrderAction">
+			<result name="query">/jsp/SysOrder/Private_Turnover_SysOrder_Query.jsp
+			</result>
 		</action>
-		<action name="privateCompleteSysOrderAction" class="order.hq.web.action.sysorder.state.PrivateCompleteSysOrderAction">
-			<result name="query">/jsp/SysOrder/Private_Complete_SysOrder_Query.jsp</result>
+		<action name="privateCompleteSysOrderAction"
+			class="order.hq.web.action.sysorder.state.PrivateCompleteSysOrderAction">
+			<result name="query">/jsp/SysOrder/Private_Complete_SysOrder_Query.jsp
+			</result>
 		</action>
-		<action name="privateCancelSysOrderAction" class="order.hq.web.action.sysorder.state.PrivateCancelSysOrderAction">
-			<result name="query">/jsp/SysOrder/Private_Cancel_SysOrder_Query.jsp</result>
+		<action name="privateCancelSysOrderAction"
+			class="order.hq.web.action.sysorder.state.PrivateCancelSysOrderAction">
+			<result name="query">/jsp/SysOrder/Private_Cancel_SysOrder_Query.jsp
+			</result>
 		</action>
 	</package>
-	
+
 	<!-- 反馈模块 -->
-	<package name="sysFeedbackModel" extends="iterceptor" namespace="/sysFeedback">
-		<action name="sysFeedbackAction" class="order.hq.web.action.sysfeedback.SysFeedbackAction">
+	<package name="sysFeedbackModel" extends="iterceptor"
+		namespace="/sysFeedback">
+		<action name="sysFeedbackAction"
+			class="order.hq.web.action.sysfeedback.SysFeedbackAction">
 		</action>
-		
-		<action name="publicInitateSysFeedbackAction" class="order.hq.web.action.sysfeedback.state.PublicInitateSysFeedbackAction">
-			<result name="query">/jsp/SysFeedback/Public_Initate_SysFeedback_Query.jsp</result>
+
+		<action name="publicInitateSysFeedbackAction"
+			class="order.hq.web.action.sysfeedback.state.PublicInitateSysFeedbackAction">
+			<result name="query">/jsp/SysFeedback/Public_Initate_SysFeedback_Query.jsp
+			</result>
+		</action>
+
+		<action name="publicHandleSysFeedbackAction"
+			class="order.hq.web.action.sysfeedback.state.PublicHandleSysFeedbackAction">
+			<result name="query">/jsp/SysFeedback/Public_Handle_SysFeedback_Query.jsp
+			</result>
+		</action>
+
+		<action name="publicCompleteSysFeedbackAction"
+			class="order.hq.web.action.sysfeedback.state.PublicCompleteSysFeedbackAction">
+			<result name="query">/jsp/SysFeedback/Public_Complete_SysFeedback_Query.jsp
+			</result>
 		</action>
 	</package>
-	
+
 	<!-- 系统管理模块 -->
 	<package name="systemModel" extends="iterceptor" namespace="/system">
 		<!-- 用户管理 -->
@@ -147,10 +178,11 @@
 			<result name="add">/jsp/System/SysUser/SysUser_Add.jsp</result>
 			<result name="edit">/jsp/System/SysUser/SysUser_Update.jsp</result>
 		</action>
-		
+
 		<!-- 语种管理 -->
 		<action name="baseLanguageAction" class="order.hq.web.action.system.BaseLanguageAction">
-			<result name="query">/jsp/System/BaseLanguage/BaseLanguage_Query.jsp</result>
+			<result name="query">/jsp/System/BaseLanguage/BaseLanguage_Query.jsp
+			</result>
 		</action>
 	</package>
 

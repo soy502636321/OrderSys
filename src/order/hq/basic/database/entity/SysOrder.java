@@ -21,7 +21,8 @@ public class SysOrder {
 	private Set feedbacks = new HashSet(0);
 
 	// 虚拟字段
-	private int baseMasterFileCount;
+	private int baseMasterFileCount; // 原文数量
+	private int baseTranslatedFileCount; // 译文数量
 
 	private ConfigSysOrderState orderState;
 
@@ -128,5 +129,14 @@ public class SysOrder {
 	public void setFeedbacks(Set feedbacks) {
 		this.feedbacks = feedbacks;
 	}
+
+	public int getBaseTranslatedFileCount() {
+		return baseTranslatedFileCount;
+	}
+
+	public void setBaseTranslatedFileCount(int baseTranslatedFileCount) {
+		this.baseTranslatedFileCount = baseTranslatedFileCount;
+	}
+
 
 }

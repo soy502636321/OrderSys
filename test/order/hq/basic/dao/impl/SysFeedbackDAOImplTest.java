@@ -37,10 +37,13 @@ public class SysFeedbackDAOImplTest {
 	public void testSave() {
 		SysFeedbackDAO sysFeedbackDAO = (SysFeedbackDAO) factory.getBean("sysFeedbackDAO");
 		SysOrderDAO sysOrderDAO = (SysOrderDAO) factory.getBean("sysOrderDAO");
-		ConfigSysFeedbackState initateFeedback = (ConfigSysFeedbackState) factory.getBean("initateFeedback");
+//		ConfigSysFeedbackState initateFeedback = (ConfigSysFeedbackState) factory.getBean("initateFeedback");
+		ConfigSysFeedbackState handleFeedback = (ConfigSysFeedbackState) factory.getBean("handleFeedback");
+		ConfigSysFeedbackState completeFeedback = (ConfigSysFeedbackState) factory.getBean("completeFeedback");
 		
 		SysFeedback feedback = new SysFeedback();
-		feedback.setState(initateFeedback);
+//		feedback.setState(initateFeedback);
+		feedback.setState(completeFeedback);
 		
 		List<?> list = sysOrderDAO.findAll();
 		feedback.setSysOrder((SysOrder) list.get(0));

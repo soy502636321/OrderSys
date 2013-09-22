@@ -64,8 +64,12 @@
 		</set>
 		
 		<!-- 虚拟列 -->
-		<property name="baseMasterFileCount" length="int">
+		<property name="baseMasterFileCount" type="int">
 			<formula>(select count(*) from BASE_MASTER_FILE t where t.ORDER_PID = ORDER_PID)</formula>
+		</property>
+		
+		<property name="baseTranslatedFileCount" type="integer">
+			<formula>(select count(*) from BASE_TRANSLATED_FILE t where t.ORDER_PID = ORDER_PID)</formula>
 		</property>
 	</class>
 </hibernate-mapping>

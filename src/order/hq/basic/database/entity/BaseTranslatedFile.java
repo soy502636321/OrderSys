@@ -1,6 +1,7 @@
 package order.hq.basic.database.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class BaseTranslatedFile implements Serializable {
 
@@ -10,6 +11,10 @@ public class BaseTranslatedFile implements Serializable {
 	private String translatedFileName;
 	private long translatedFileSize;
 	private String translatedFileLocation;
+	
+	private Date operTime;
+	private SysUser operUser;
+	private long downloadSize;
 
 	private SysOrder sysOrder;
 	private SysFeedback sysFeedback;
@@ -65,6 +70,32 @@ public class BaseTranslatedFile implements Serializable {
 	public void setSysFeedback(SysFeedback sysFeedback) {
 		this.sysFeedback = sysFeedback;
 	}
+
+	public Date getOperTime() {
+		return operTime;
+	}
+
+	public void setOperTime(Date operTime) {
+		this.operTime = operTime;
+	}
+
+	public SysUser getOperUser() {
+		return operUser;
+	}
+
+	public void setOperUser(SysUser operUser) {
+		this.operUser = operUser;
+	}
+
+	public long getDownloadSize() {
+		return downloadSize;
+	}
+
+	public void setDownloadSize(long downloadSize) {
+		this.downloadSize = downloadSize;
+	}
+	
+	
 
 	
 }

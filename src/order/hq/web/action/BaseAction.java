@@ -4,9 +4,19 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import order.hq.basic.database.entity.BaseMasterFile;
+import order.hq.basic.database.entity.BaseTranslatedFile;
+import order.hq.basic.database.entity.ConfigSysOrderState;
+import order.hq.basic.vo.BaseMasterFileVO;
+import order.hq.basic.vo.BaseTranslatedFileVO;
+import order.hq.basic.vo.SysOrderVO;
 import order.hq.basic.vo.SysUserVO;
 import order.hq.util.GlobalUtil;
 import order.hq.util.PaginatedList;
+import order.hq.web.service.BaseMasterFileService;
+import order.hq.web.service.BaseTranslatedFileService;
+import order.hq.web.service.ConfigSysOrderStateService;
+import order.hq.web.service.SysOrderService;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
@@ -22,6 +32,24 @@ public class BaseAction extends ActionSupport implements SessionAware,
 	private PaginatedList paginatedList;
 	private int page = 1;
 	private String[] cbId;
+
+	// VO
+	private SysOrderVO sysOrderVO;
+	private BaseMasterFileVO baseMasterFileVO;
+	private BaseTranslatedFileVO baseTranslatedFileVO;
+
+	// SERVICE
+	private SysOrderService sysOrderService;
+	private ConfigSysOrderStateService configSysOrderStateService;
+	private BaseMasterFileService baseMasterFileService;
+	private BaseTranslatedFileService baseTranslatedFileService;
+
+	// 订单状态
+	private ConfigSysOrderState cancel;
+	private ConfigSysOrderState complete;
+	private ConfigSysOrderState turnover;
+	private ConfigSysOrderState accept;
+	private ConfigSysOrderState initate;
 
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -73,6 +101,106 @@ public class BaseAction extends ActionSupport implements SessionAware,
 
 	public void setCbId(String[] cbId) {
 		this.cbId = cbId;
+	}
+
+	public SysOrderVO getSysOrderVO() {
+		return sysOrderVO;
+	}
+
+	public void setSysOrderVO(SysOrderVO sysOrderVO) {
+		this.sysOrderVO = sysOrderVO;
+	}
+
+	public BaseMasterFileVO getBaseMasterFileVO() {
+		return baseMasterFileVO;
+	}
+
+	public void setBaseMasterFileVO(BaseMasterFileVO baseMasterFileVO) {
+		this.baseMasterFileVO = baseMasterFileVO;
+	}
+
+	public BaseTranslatedFileVO getBaseTranslatedFileVO() {
+		return baseTranslatedFileVO;
+	}
+
+	public void setBaseTranslatedFileVO(
+			BaseTranslatedFileVO baseTranslatedFileVO) {
+		this.baseTranslatedFileVO = baseTranslatedFileVO;
+	}
+
+	public ConfigSysOrderState getCancel() {
+		return cancel;
+	}
+
+	public void setCancel(ConfigSysOrderState cancel) {
+		this.cancel = cancel;
+	}
+
+	public ConfigSysOrderState getComplete() {
+		return complete;
+	}
+
+	public void setComplete(ConfigSysOrderState complete) {
+		this.complete = complete;
+	}
+
+	public ConfigSysOrderState getTurnover() {
+		return turnover;
+	}
+
+	public void setTurnover(ConfigSysOrderState turnover) {
+		this.turnover = turnover;
+	}
+
+	public ConfigSysOrderState getAccept() {
+		return accept;
+	}
+
+	public void setAccept(ConfigSysOrderState accept) {
+		this.accept = accept;
+	}
+
+	public ConfigSysOrderState getInitate() {
+		return initate;
+	}
+
+	public void setInitate(ConfigSysOrderState initate) {
+		this.initate = initate;
+	}
+
+	public SysOrderService getSysOrderService() {
+		return sysOrderService;
+	}
+
+	public void setSysOrderService(SysOrderService sysOrderService) {
+		this.sysOrderService = sysOrderService;
+	}
+
+	public ConfigSysOrderStateService getConfigSysOrderStateService() {
+		return configSysOrderStateService;
+	}
+
+	public void setConfigSysOrderStateService(
+			ConfigSysOrderStateService configSysOrderStateService) {
+		this.configSysOrderStateService = configSysOrderStateService;
+	}
+
+	public BaseMasterFileService getBaseMasterFileService() {
+		return baseMasterFileService;
+	}
+
+	public void setBaseMasterFileService(
+			BaseMasterFileService baseMasterFileService) {
+		this.baseMasterFileService = baseMasterFileService;
+	}
+
+	public BaseTranslatedFileService getBaseTranslatedFileService() {
+		return baseTranslatedFileService;
+	}
+
+	public void setBaseTranslatedFileService(
+			BaseTranslatedFileService baseTranslatedFileService) {
+		this.baseTranslatedFileService = baseTranslatedFileService;
 	}
 
 }

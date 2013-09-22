@@ -18,6 +18,7 @@ public class SysOrderVO {
 	private Date operTime = new Date(); // 订单增加时间
 	private SysUser operUser; // 订单增加人
 	private int baseMasterFileCount;
+	private int baseTranslatedFileCount; // 译文数量
 
 	public SysOrderVO() {
 	}
@@ -122,4 +123,16 @@ public class SysOrderVO {
 		this.baseMasterFileCount = baseMasterFileCount;
 	}
 
+	public int getBaseTranslatedFileCount() {
+		if (getSysOrder() != null) {
+			baseTranslatedFileCount = getSysOrder().getBaseTranslatedFileCount();
+		}
+		return baseTranslatedFileCount;
+	}
+
+	public void setBaseTranslatedFileCount(int baseTranslatedFileCount) {
+		this.baseTranslatedFileCount = baseTranslatedFileCount;
+	}
+
+	
 }

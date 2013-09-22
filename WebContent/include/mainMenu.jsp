@@ -1,13 +1,11 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="/WEB-INF/displaytag-12.tld" prefix="display"%>
 <%@ taglib uri="/WEB-INF/struts-tags.tld" prefix="s"%>
+<%@ taglib uri="/WEB-INF/button.tld" prefix="order" %>
 <jsp:directive.page import="order.hq.util.GlobalUtil"/>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-   
-    <title>mainMenu</title>
-    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    

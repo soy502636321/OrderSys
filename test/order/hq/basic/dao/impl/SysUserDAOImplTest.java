@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import order.hq.basic.dao.BaseOrganDAO;
+import order.hq.basic.dao.SysFunctionDAO;
 import order.hq.basic.dao.SysSectionDAO;
 import order.hq.basic.dao.SysUserDAO;
 import order.hq.basic.database.entity.BaseOrgan;
@@ -36,17 +37,23 @@ public class SysUserDAOImplTest {
 	@Test
 	public void testSave() {
 		SysUserDAO sysUserDAO = (SysUserDAO) factory.getBean("sysUserDAO");
-		SysSectionDAO sysSectionDAO = (SysSectionDAO) factory.getBean("sysSectionDAO");
+//		SysSectionDAO sysSectionDAO = (SysSectionDAO) factory.getBean("sysSectionDAO");
+		SysFunctionDAO sysFunctionDAO = (SysFunctionDAO) factory.getBean("sysFunctionDAO");
+//		
+//		List<SysSection> sysSections = (List<SysSection>) sysSectionDAO.findAll();
+//		SysUser sysUser = new SysUser();
+//		sysUser.setUserPid("admin");
+//		String password = PasswordControl.EncryptePassword("123");
+//		sysUser.setPassword(password);
+//		sysUser.setSysSection(sysSections.get(0));
+//		sysUser.setUserState("01");
+//		SysUser sysUser = (SysUser) sysUserDAO.findByPK("admin", SysUser.class);
 		
-		List<SysSection> sysSections = (List<SysSection>) sysSectionDAO.findAll();
-		SysUser sysUser = new SysUser();
-		sysUser.setUserPid("admin");
-		String password = PasswordControl.EncryptePassword("123");
-		sysUser.setPassword(password);
-		sysUser.setSysSection(sysSections.get(0));
-		sysUser.setUserState("01");
+		List list = sysFunctionDAO.findAll();
+		System.out.println(list);
 		
-		sysUserDAO.save(sysUser);
+//		sysUserDAO.save(sysUser);
+//		System.out.println(sysUser.getSysSection().getSectionFunctions());
 	}
 
 	@Test

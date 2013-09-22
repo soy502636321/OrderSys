@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" 
+  "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+	<tlib-version>0.1</tlib-version>
+	<jsp-version>1.2</jsp-version>
+	<uri>/order</uri>
+	<short-name>order</short-name>
+	<tag>
+		<name>button</name>
+		<tag-class>order.hq.common.tag.PowerButtonTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<name>name</name>
+		</attribute>
+		<attribute>
+			<name>id</name>
+		</attribute>
+		<attribute>
+			<name>js</name>
+		</attribute>
+		<attribute>
+			<name>url</name>
+		</attribute>
+		<attribute>
+			<name>mode</name>
+		</attribute>
+		<attribute>
+			<name>location</name>
+		</attribute>
+		<attribute>
+			<name>type</name>
+		</attribute>
+		<attribute>
+			<name>dialogWidth</name>
+		</attribute>
+		<attribute>
+			<name>dialogHeight</name>
+		</attribute>
+	</tag>
+	<tag>
+		<name>buttons</name>
+		<tag-class>order.hq.common.tag.PowerButtonArrayTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<name>function</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>id</name>
+		</attribute>
+		<attribute>
+			<name>size</name>
+		</attribute>
+	</tag>
+</taglib>

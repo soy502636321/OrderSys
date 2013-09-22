@@ -231,3 +231,20 @@ function powerMoreSelect(obj, location) {
 	}
 	return moreSelectCheckBox("cbId");
 }
+
+function powerDialogSingleSelect(obj, msg, location) {
+	if (obj) {
+		form = $(obj).parents('form:first');
+		if (location) {
+			$(form).attr('target', '_blank');
+		} else {
+			$(form).attr('target', '');
+		}
+	}
+	
+//	if (moreSelectCheckBox("cbId") && ) {
+//		
+//	} else {
+//		
+//	}
+}

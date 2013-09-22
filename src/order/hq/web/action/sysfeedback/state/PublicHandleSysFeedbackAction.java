@@ -15,7 +15,7 @@ public class PublicHandleSysFeedbackAction extends SysFeedbackAction {
 	public String query() {
 		log.debug("ACTION:查询正在处理的反馈");
 		PaginatedList paginatedList = new PaginatedList(getPage());
-		paginatedList = getSysFeedbackService().querySysFeedback(paginatedList, getHandleFeedback(), getSysFeedbackVO(), null);
+		paginatedList = getSysFeedbackService().querySysFeedback(paginatedList, getHandleFeedback(), getSysFeedbackVO(), null, getLoginVO());
 		setPaginatedList(paginatedList);
 		return ForwardUtil.FORWARD_QUERY_PAGE;
 	}

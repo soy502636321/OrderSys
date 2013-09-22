@@ -36,4 +36,14 @@
 	<bean id="sysFeedbackService" class="order.hq.web.service.impl.SysFeedbackServiceImpl">
 		<property name="sysFeedbackDAO" ref="sysFeedbackDAO" />
 	</bean>
+	
+	<!-- 原文件服务 -->
+	<bean id="baseMasterFileService" class="order.hq.web.service.impl.BaseMasterFileServiceImpl">
+		<property name="baseMasterFileDAO" ref="baseMasterFileDAO" />
+	</bean>
+	
+	<!-- 译文文件服务 -->	
+	<bean id="baseTranslatedFileService" class="order.hq.web.service.impl.BaseTranslatedFileServiceImpl">
+		<property name="baseTranslatedFileDAO" ref="baseTranslatedFileDAO" />
+	</bean>
 </beans>

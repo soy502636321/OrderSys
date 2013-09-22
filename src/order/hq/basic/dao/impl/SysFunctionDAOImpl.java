@@ -6,6 +6,7 @@ import order.hq.basic.dao.AbstractBaseDAO;
 import order.hq.basic.dao.SysFunctionDAO;
 import order.hq.basic.database.entity.SysFunction;
 
+import org.hibernate.exception.DataException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
@@ -23,10 +24,11 @@ public class SysFunctionDAOImpl extends AbstractBaseDAO implements SysFunctionDA
 		try {
 			String hql = "from SysFunction obj order by obj.operTime";
 			return getHibernateTemplate().find(hql);
-		} catch (Exception e) {
+		} catch (DataException e) {
 			log.error("找出所有功能信息异常:"+e);
+			System.out.println("其实已经报错了");
+			throw e;
 		}
-		return null;
 	}
 	
 	@Override

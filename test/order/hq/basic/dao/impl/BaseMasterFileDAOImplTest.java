@@ -8,6 +8,7 @@ import order.hq.basic.dao.BaseMasterFileDAO;
 import order.hq.basic.dao.SysOrderDAO;
 import order.hq.basic.database.entity.BaseMasterFile;
 import order.hq.basic.database.entity.SysOrder;
+import order.hq.util.PaginatedList;
 
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
@@ -24,6 +25,14 @@ public class BaseMasterFileDAOImplTest {
 	@Test
 	public void testGetLogger() {
 		
+	}
+	
+	@Test
+	public void testQueryBaseMasterFile() {
+		BaseMasterFileDAO baseMasterFileDAO = (BaseMasterFileDAO) factory.getBean("baseMasterFileDAO");
+		PaginatedList paginatedList = new PaginatedList(1);
+		paginatedList = baseMasterFileDAO.queryBaseMasterFile(paginatedList, null, null);
+		System.out.println(paginatedList.getList());
 	}
 
 	@Test

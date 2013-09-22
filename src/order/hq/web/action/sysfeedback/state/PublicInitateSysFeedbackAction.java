@@ -22,7 +22,7 @@ public class PublicInitateSysFeedbackAction extends SysFeedbackAction {
 	public String query() {
 		log.debug("ACTION:查询新的反馈");
 		PaginatedList paginatedList = new PaginatedList(getPage());
-		paginatedList = getSysFeedbackService().querySysFeedback(paginatedList, getInitateFeedback(),getSysFeedbackVO(), null);
+		paginatedList = getSysFeedbackService().querySysFeedback(paginatedList, getInitateFeedback(),getSysFeedbackVO(), null, getLoginVO());
 		setPaginatedList(paginatedList);
 		return ForwardUtil.FORWARD_QUERY_PAGE;
 	}

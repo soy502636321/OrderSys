@@ -10,19 +10,20 @@
 <body>
 	<s:form action="publicInitateSysOrderAction" namespace="/sysOrder">
 		<br>
-		<table>
+		<table style="width: 100%">
 			<tr>
 				<td colspan="4">${ actionMessages[0] }${actionErrors[0]}</td>
 			</tr>
-		</table>
-		<br>
-		<table style="width: 100%">
 			<tr>
-				<td></td>
+				<td><order:buttons function="8a80cd8e40fd36f50140fd3708870001">
+						<order:button name="查看订单" mode="single" location="other"></order:button>
+						<order:button name="查看指示" mode="single" location="other"></order:button>
+						<order:button name="订单完成" mode="more" location="this"></order:button>
+						<order:button name="查看原文" mode="single" location="other"></order:button>
+					</order:buttons></td>
 			</tr>
 			<tr>
-				<td>
-					<display:table name="paginatedList" class="simple"
+				<td><display:table name="paginatedList" class="simple"
 						requestURI="newOrderAction!query">
 						<display:column property="orderPid"
 							decorator="order.hq.common.displaytag.CheckBoxDecorator"
@@ -30,15 +31,17 @@
 							title="<input type=checkbox class=checkbox name=cbAll onclick=changeCheckBoxAll(this,\"cbId\")>">
 						</display:column>
 						<display:column property="orderNo" title="订单编号" />
-						<display:column property="operTime" title="下单时间" />
-						<display:column property="submitTime" title="交稿时间" />
+						<display:column property="operTime" title="下单时间"
+							format="{0,date,yyyy-MM-dd HH:mm}" />
+						<display:column property="submitTime" title="交稿时间"
+							format="{0,date,yyy-MM-dd HH:mm}" />
 						<display:column property="startLanguage.languageName" title="原文语种" />
 						<display:column property="endLanguage.languageName" title="译文语种" />
 						<display:column property="baseMasterFileCount" title="原文数量" />
+						<display:column property="baseTranslatedFileCount" title="译文数量" />
 						<display:column property="operUser.email" title="联系邮箱" />
 						<display:column property="operUser.mobileTel" title="联系电话" />
-					</display:table>
-				</td>
+					</display:table></td>
 			</tr>
 		</table>
 	</s:form>

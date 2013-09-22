@@ -22,8 +22,20 @@
 			<column name="MASTER_FILE_LOCATION" length="1000" />
 		</property>
 		
+		<property name="operTime" type="date">
+			<column name="OPER_TIME" />
+		</property>
+		
+		<property name="downloadSize" type="long">
+			<column name="DOWNLOAD_SIZE" />
+		</property>
+		
 		<many-to-one name="sysOrder" class="order.hq.basic.database.entity.SysOrder" not-null="true">
 			<column name="ORDER_PID" length="50" />
+		</many-to-one>
+		
+		<many-to-one name="operUser" class="order.hq.basic.database.entity.SysUser">
+			<column name="OPER_USER_PID" length="50" />
 		</many-to-one>
 	</class>
 </hibernate-mapping>

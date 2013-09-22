@@ -5,9 +5,11 @@ import org.slf4j.LoggerFactory;
 
 import order.hq.util.ForwardUtil;
 import order.hq.util.PaginatedList;
+import order.hq.util.SystemUtil;
 import order.hq.web.action.sysorder.SysOrderAction;
 
 public class PrivateTurnoverSysOrderAction extends SysOrderAction {
+	private static final long serialVersionUID = 1L;
 	private static final Logger log = LoggerFactory.getLogger(PrivateTurnoverSysOrderAction.class);
 	
 	@Override
@@ -18,4 +20,5 @@ public class PrivateTurnoverSysOrderAction extends SysOrderAction {
 		setPaginatedList(paginatedList);
 		return ForwardUtil.FORWARD_QUERY_PAGE;
 	}
+	
 }

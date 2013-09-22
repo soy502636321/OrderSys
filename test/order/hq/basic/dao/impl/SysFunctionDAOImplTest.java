@@ -2,6 +2,8 @@ package order.hq.basic.dao.impl;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 import order.hq.basic.dao.SysFunctionDAO;
 import order.hq.basic.database.entity.SysFunction;
 import order.hq.util.GlobalUtil;
@@ -26,12 +28,13 @@ public class SysFunctionDAOImplTest {
 	@Test
 	public void testSave() {
 		SysFunctionDAO sysFunctionDAO = (SysFunctionDAO) factory.getBean("sysFunctionDAO");
-		SysFunction sysFunction = (SysFunction) sysFunctionDAO.findByPK("8a80c97b4120bee5014120befc9d0001", SysFunction.class);
+		SysFunction sysFunction = (SysFunction) sysFunctionDAO.findByPK("8a80cd8e40fd523c0140fd5251060001", SysFunction.class);
 		SysFunction function = new SysFunction();
-		function.setFunctionName("处理完");
-		function.setFunctionType(GlobalUtil.isMenu);
-		function.setRemark("反馈管理》处理完");
+		function.setFunctionName("查看原文");
+		function.setFunctionType(GlobalUtil.isBtn);
+		function.setRemark(sysFunction.getRemark() + "》查看原文");
 		function.setParent(sysFunction);
+		function.setOperTime(new Date());
 		
 		sysFunctionDAO.save(function);
 	}

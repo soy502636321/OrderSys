@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50171
 File Encoding         : 65001
 
-Date: 2013-09-18 08:01:30
+Date: 2013-09-23 07:54:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -41,15 +41,20 @@ CREATE TABLE `base_master_file` (
   `MASTER_FILE_SIZE` bigint(20) DEFAULT NULL,
   `MASTER_FILE_LOCATION` longtext,
   `ORDER_PID` varchar(50) DEFAULT NULL,
+  `OPER_TIME` date DEFAULT NULL,
+  `DOWNLOAD_SIZE` bigint(20) DEFAULT NULL,
+  `OPER_USER_PID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`MASTER_FILE_PID`),
   KEY `FK224FE0CB1A374D98` (`ORDER_PID`),
-  CONSTRAINT `FK224FE0CB1A374D98` FOREIGN KEY (`ORDER_PID`) REFERENCES `sys_order` (`ORDER_PID`)
+  KEY `FK224FE0CB469B0283` (`OPER_USER_PID`),
+  CONSTRAINT `FK224FE0CB1A374D98` FOREIGN KEY (`ORDER_PID`) REFERENCES `sys_order` (`ORDER_PID`),
+  CONSTRAINT `FK224FE0CB469B0283` FOREIGN KEY (`OPER_USER_PID`) REFERENCES `sys_user` (`USER_PID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of base_master_file
 -- ----------------------------
-INSERT INTO `base_master_file` VALUES ('ff80808140fd190b0140fd191f3d0001', '测试文件.txt', '400', '电脑中', 'ff80808140fc7ed30140fc7ee7040001');
+INSERT INTO `base_master_file` VALUES ('ff80808140fd190b0140fd191f3d0001', '测试文件.txt', '400', '电脑中', 'ff80808140fc7ed30140fc7ee7040001', '2013-09-17', '0', 'admin');
 
 -- ----------------------------
 -- Table structure for `base_organ`
@@ -87,10 +92,15 @@ CREATE TABLE `base_translated_file` (
   `TRANSLATED_FILE_LOCATION` longtext,
   `ORDER_PID` varchar(50) DEFAULT NULL,
   `FEEDBACK_PID` varchar(50) DEFAULT NULL,
+  `OPER_TIME` date DEFAULT NULL,
+  `DOWNLOAD_SIZE` bigint(20) DEFAULT NULL,
+  `OPER_USER_PID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`TRANSLATED_FILE_PID`),
   KEY `FK1D4AA9D71A374D98` (`ORDER_PID`),
   KEY `FK1D4AA9D7D5836A26` (`FEEDBACK_PID`),
+  KEY `FK1D4AA9D7469B0283` (`OPER_USER_PID`),
   CONSTRAINT `FK1D4AA9D71A374D98` FOREIGN KEY (`ORDER_PID`) REFERENCES `sys_order` (`ORDER_PID`),
+  CONSTRAINT `FK1D4AA9D7469B0283` FOREIGN KEY (`OPER_USER_PID`) REFERENCES `sys_user` (`USER_PID`),
   CONSTRAINT `FK1D4AA9D7D5836A26` FOREIGN KEY (`FEEDBACK_PID`) REFERENCES `sys_feedback` (`FEEDBACK_PID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -192,6 +202,8 @@ CREATE TABLE `sys_feedback` (
 -- Records of sys_feedback
 -- ----------------------------
 INSERT INTO `sys_feedback` VALUES ('8a80c97b41219b290141219b4e970001', '8a80cd8e40fd2c8d0140fd2ca3170001', '8a80c97b4120a826014120a83cc30001');
+INSERT INTO `sys_feedback` VALUES ('8a80cf0f413e4a7b01413e4aa7330001', '8a80cd8e40fd2c8d0140fd2ca3170001', '8a80c97b4120a8b6014120a8cc410001');
+INSERT INTO `sys_feedback` VALUES ('8a80cf0f413e4b1601413e4b2fbc0001', '8a80cd8e40fd2c8d0140fd2ca3170001', '8a80c97b4120aa73014120aa8c600001');
 
 -- ----------------------------
 -- Table structure for `sys_function`
@@ -218,8 +230,8 @@ INSERT INTO `sys_function` VALUES ('8a80c97b411f8a4901411f8a5cdd0001', '用户�
 INSERT INTO `sys_function` VALUES ('8a80c97b411f8ac601411f8ade130001', '语种管理', '/system/baseLanguageAction!query', '01', '系统管理》语种管理', '8a80c97b411f856e01411f8582eb0001', '2013-09-22 11:10:21');
 INSERT INTO `sys_function` VALUES ('8a80c97b4120bee5014120befc9d0001', '反馈管理', null, '01', '反馈管理', null, '2013-09-15 16:32:26');
 INSERT INTO `sys_function` VALUES ('8a80c97b4120c105014120c11c700001', '新反馈', '/sysFeedback/publicInitateSysFeedbackAction!query', '01', '反馈管理》新反馈', '8a80c97b4120bee5014120befc9d0001', '2013-09-23 16:35:25');
-INSERT INTO `sys_function` VALUES ('8a80c97b4120c1a5014120c1bbfc0001', '处理中', null, '01', '反馈管理》处理中', '8a80c97b4120bee5014120befc9d0001', '2013-09-24 16:35:29');
-INSERT INTO `sys_function` VALUES ('8a80c97b4120c22c014120c2431d0001', '处理完', null, '01', '反馈管理》处理完', '8a80c97b4120bee5014120befc9d0001', '2013-09-25 16:35:32');
+INSERT INTO `sys_function` VALUES ('8a80c97b4120c1a5014120c1bbfc0001', '处理中', '/sysFeedback/publicHandleSysFeedbackAction!query', '01', '反馈管理》处理中', '8a80c97b4120bee5014120befc9d0001', '2013-09-24 16:35:29');
+INSERT INTO `sys_function` VALUES ('8a80c97b4120c22c014120c2431d0001', '处理完', '/sysFeedback/publicCompleteSysFeedbackAction!query', '01', '反馈管理》处理完', '8a80c97b4120bee5014120befc9d0001', '2013-09-25 16:35:32');
 INSERT INTO `sys_function` VALUES ('8a80cd8e40fd36f50140fd3708870001', '已成交', '/sysOrder/publicTurnoverSysOrderAction!query', '01', '订单管理》已成交', 'ff80808140fbdead0140fbdebe480001', '2013-09-10 19:05:48');
 INSERT INTO `sys_function` VALUES ('8a80cd8e40fd4aa90140fd4abe7c0001', '已完成', '/sysOrder/publicCompleteSysOrderAction!query', '01', '订单管理》已完成', 'ff80808140fbdead0140fbdebe480001', '2013-09-11 19:18:01');
 INSERT INTO `sys_function` VALUES ('8a80cd8e40fd523c0140fd5251060001', '已作废', '/sysOrder/publicCancelSysOrderAction!query', '01', '订单管理》已作废', 'ff80808140fbdead0140fbdebe480001', '2013-09-12 19:26:19');
@@ -230,9 +242,29 @@ INSERT INTO `sys_function` VALUES ('8a80cd8e40fd6c580140fd6c6c8e0001', '已成�
 INSERT INTO `sys_function` VALUES ('8a80cd8e40fd71240140fd7137da0001', '已完成', '/sysOrder/privateCompleteSysOrderAction!query', '01', '订单查看》已完成', '8a80cd8e40fd569a0140fd56ad9a0001', '2013-09-18 20:00:25');
 INSERT INTO `sys_function` VALUES ('8a80cd8e40fd78fc0140fd7910370001', '已作废', '/sysOrder/privateCancelSysOrderAction!query', '01', '订单查看》已作废', '8a80cd8e40fd569a0140fd56ad9a0001', '2013-09-19 20:08:49');
 INSERT INTO `sys_function` VALUES ('8a80cd8e40fd7e410140fd7e54f80001', '查看指示', 'publicInitateSysOrderAction!findSysShow', '02', '订单管理》新订单》查看指示', 'ff80808140fc52030140fc5215420001', '2013-09-22 11:10:29');
+INSERT INTO `sys_function` VALUES ('8a80cf0f413ea24301413ea25dba0001', '接受订单', 'publicInitateSysOrderAction!acceptSysOrder', '02', '订单管理》新订单》接受订单', 'ff80808140fc52030140fc5215420001', '2013-09-19 18:13:21');
+INSERT INTO `sys_function` VALUES ('8a80cf0f413ea4ae01413ea4c7770001', '查看原文', 'publicInitateSysOrderAction!queryBaseMasterFile', '02', '订单管理》新订单》查看原文', 'ff80808140fc52030140fc5215420001', '2013-09-19 18:13:26');
+INSERT INTO `sys_function` VALUES ('8a80cf0f413ea74301413ea75efa0001', '查看订单', 'publicInitateSysOrderAction!findSysOrder', '02', '订单管理》新订单》查看订单', 'ff80808140fc52030140fc5215420001', '2013-09-12 18:13:30');
+INSERT INTO `sys_function` VALUES ('8a80cf0f413ffb8901413ffba4980001', '查看订单', 'publicAcceptSysOrderAction!acceptSysOrder', '02', '订单管理》已接受》查看订单', 'ff80808140fd20c80140fd20dada0001', '2013-09-26 18:13:38');
+INSERT INTO `sys_function` VALUES ('8a80cf0f413ffe9a01413ffeb41b0001', '查看指示', 'publicAcceptSysOrderAction!findSysShow', '02', '订单管理》已接受》查看指示', 'ff80808140fd20c80140fd20dada0001', '2013-09-27 18:13:41');
+INSERT INTO `sys_function` VALUES ('8a80cf0f41400102014140011a3d0001', '订单成交', 'publicAcceptSysOrderAction!turnoverSysOrder', '02', '订单管理》已接受》订单成交', 'ff80808140fd20c80140fd20dada0001', '2013-09-27 18:13:43');
+INSERT INTO `sys_function` VALUES ('8a80cf0f414001a401414001bde00001', '作废订单', 'publicAcceptSysOrderAction!cancelSysOrder', '02', '订单管理》已接受》作废订单', 'ff80808140fd20c80140fd20dada0001', '2013-09-27 18:13:46');
+INSERT INTO `sys_function` VALUES ('8a80cf0f414002120141400229aa0001', '查看原文', 'publicAcceptSysOrderAction!queryBaseMasterFile', '02', '订单管理》已接受》查看原文', 'ff80808140fd20c80140fd20dada0001', '2013-09-27 18:13:49');
+INSERT INTO `sys_function` VALUES ('8a80cf0f41400a350141400a4c5e0001', '查看原文', 'publicTurnoverSysOrderAction!queryBaseMasterFile', '02', '订单管理》已成交》查看原文', '8a80cd8e40fd36f50140fd3708870001', null);
+INSERT INTO `sys_function` VALUES ('8a80cf0f41400c5e0141400c75a60001', '查看订单', 'publicTurnoverSysOrderAction!findSysOrder', '02', '订单管理》已成交》查看订单', '8a80cd8e40fd36f50140fd3708870001', '2013-09-21 18:24:20');
+INSERT INTO `sys_function` VALUES ('8a80cf0f41400e4e0141400e665a0001', '查看指示', 'publicTurnoverSysOrderAction!findSysShow', '02', '订单管理》已成交》查看指示', '8a80cd8e40fd36f50140fd3708870001', '2013-09-21 18:26:27');
+INSERT INTO `sys_function` VALUES ('8a80cf0f41400f1e0141400f36ca0001', '订单完成', 'publicTurnoverSysOrderAction!completeSysOrder', '02', '订单管理》已成交》订单完成', '8a80cd8e40fd36f50140fd3708870001', '2013-09-21 18:27:20');
+INSERT INTO `sys_function` VALUES ('8a80cf0f41402271014140228b080001', '查看订单', 'publicCompleteSysOrderAction!findSysOrder', '02', '订单管理》已完成》查看订单', '8a80cd8e40fd4aa90140fd4abe7c0001', '2013-09-21 18:48:27');
+INSERT INTO `sys_function` VALUES ('8a80cf0f414022c101414022d8ca0001', '查看指示', 'publicCompleteSysOrderAction!findSysShow', '02', '订单管理》已完成》查看指示', '8a80cd8e40fd4aa90140fd4abe7c0001', '2013-09-21 18:48:47');
+INSERT INTO `sys_function` VALUES ('8a80cf0f4140234f01414023674e0001', '查看原文', 'publicCompleteSysOrderAction!queryBaseMasterFile', '02', '订单管理》已完成》查看原文', '8a80cd8e40fd4aa90140fd4abe7c0001', '2013-09-21 18:49:24');
+INSERT INTO `sys_function` VALUES ('8a80cf0f41402573014140258c9f0001', '查看订单', 'publicCancelSysOrderAction!findSysOrder', '02', '订单管理》已作废》查看订单', '8a80cd8e40fd523c0140fd5251060001', '2013-09-21 18:51:44');
+INSERT INTO `sys_function` VALUES ('8a80cf0f414025d001414025e84c0001', '查看指示', 'publicCancelSysOrderAction!findSysShow', '02', '订单管理》已作废》查看指示', '8a80cd8e40fd523c0140fd5251060001', '2013-09-21 18:52:08');
+INSERT INTO `sys_function` VALUES ('8a80cf0f41402620014140263ab20001', '恢复订单', 'publicCancelSysOrderAction!initateSysOrder', '02', '订单管理》已作废》恢复订单', '8a80cd8e40fd523c0140fd5251060001', '2013-09-21 18:52:29');
+INSERT INTO `sys_function` VALUES ('8a80cf0f41402663014140267b740001', '查看原文', 'publicCancelSysOrderAction!queryBaseMasterFile', '02', '订单管理》已作废》查看原文', '8a80cd8e40fd523c0140fd5251060001', '2013-09-21 18:52:45');
 INSERT INTO `sys_function` VALUES ('ff80808140fbdead0140fbdebe480001', '订单管理', '', '01', '订单管理', null, '2013-09-13 19:31:09');
 INSERT INTO `sys_function` VALUES ('ff80808140fc52030140fc5215420001', '新订单', '/sysOrder/publicInitateSysOrderAction!query', '01', '订单管理》新订单', 'ff80808140fbdead0140fbdebe480001', '2013-09-08 19:05:40');
 INSERT INTO `sys_function` VALUES ('ff80808140fd20c80140fd20dada0001', '已接受', '/sysOrder/publicAcceptSysOrderAction!query', '01', '订单管理》已接受', 'ff80808140fbdead0140fbdebe480001', '2013-09-09 19:05:44');
+INSERT INTO `sys_function` VALUES ('ff808081413f895a01413f8978820001', '作废订单', 'publicInitateSysOrderAction!cancelSysOrder', '02', '订单管理》新订单》作废订单', 'ff80808140fc52030140fc5215420001', null);
 
 -- ----------------------------
 -- Table structure for `sys_order`
@@ -266,11 +298,11 @@ CREATE TABLE `sys_order` (
 -- ----------------------------
 -- Records of sys_order
 -- ----------------------------
-INSERT INTO `sys_order` VALUES ('8a80cd8e40fd2c8d0140fd2ca3170001', 'ff80808140fc35f00140fc3600d80001', '20130908-2', '2013-09-08 18:44:55', 'admin', 'ff80808140fcf97f0140fcf993110001', 'ff80808140fcfa350140fcfa475d0001', '2013-09-25 18:50:42', null);
-INSERT INTO `sys_order` VALUES ('8a80cd8e40fd30ea0140fd30ff0e0001', 'ff80808140fc38580140fc38694d0001', '20130908-3', '2013-09-08 18:49:40', 'admin', 'ff80808140fcf97f0140fcf993110001', 'ff80808140fcfa350140fcfa475d0001', '2013-09-08 18:49:41', null);
-INSERT INTO `sys_order` VALUES ('8a80cd8e40fd315e0140fd3172d70001', 'ff80808140fc3a780140fc3a88c20001', '20130908-4', '2013-09-08 18:50:10', 'admin', 'ff80808140fcf97f0140fcf993110001', 'ff80808140fcfa350140fcfa475d0001', '2013-09-08 18:50:11', null);
+INSERT INTO `sys_order` VALUES ('8a80cd8e40fd2c8d0140fd2ca3170001', 'ff80808140fc38580140fc38694d0001', '20130908-2', '2013-09-08 18:44:55', 'admin', 'ff80808140fcf97f0140fcf993110001', 'ff80808140fcfa350140fcfa475d0001', '2013-09-25 18:50:42', null);
+INSERT INTO `sys_order` VALUES ('8a80cd8e40fd30ea0140fd30ff0e0001', 'ff80808140fc3a780140fc3a88c20001', '20130908-3', '2013-09-08 18:49:40', 'admin', 'ff80808140fcf97f0140fcf993110001', 'ff80808140fcfa350140fcfa475d0001', '2013-09-08 18:49:41', null);
+INSERT INTO `sys_order` VALUES ('8a80cd8e40fd315e0140fd3172d70001', 'ff80808140fc3b0d0140fc3b1e5a0001', '20130908-4', '2013-09-08 18:50:10', 'admin', 'ff80808140fcf97f0140fcf993110001', 'ff80808140fcfa350140fcfa475d0001', '2013-09-08 18:50:11', null);
 INSERT INTO `sys_order` VALUES ('8a80cd8e40fd31be0140fd31d3460001', 'ff80808140fc3b0d0140fc3b1e5a0001', '20130908-5', '2013-09-08 18:50:35', 'admin', 'ff80808140fcf97f0140fcf993110001', 'ff80808140fcfa350140fcfa475d0001', '2013-09-08 18:50:35', null);
-INSERT INTO `sys_order` VALUES ('ff80808140fc7ed30140fc7ee7040001', 'ff80808140fc325f0140fc3271290001', '20130908-0', '2013-09-08 15:35:09', 'admin', 'ff80808140fcfa350140fcfa475d0001', 'ff80808140fcf97f0140fcf993110001', '2013-09-10 17:44:37', null);
+INSERT INTO `sys_order` VALUES ('ff80808140fc7ed30140fc7ee7040001', 'ff80808140fc3a780140fc3a88c20001', '20130908-0', '2013-09-08 15:35:09', 'admin', 'ff80808140fcfa350140fcfa475d0001', 'ff80808140fcf97f0140fcf993110001', '2013-09-10 17:44:37', null);
 
 -- ----------------------------
 -- Table structure for `sys_section`

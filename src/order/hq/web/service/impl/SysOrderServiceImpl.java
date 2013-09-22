@@ -23,6 +23,11 @@ public class SysOrderServiceImpl implements SysOrderService {
 			SysUserVO sysUserVO) {
 		return getSysOrderDAO().querySysOrder(paginatedList, vo, configSysOrderState, sysUserVO);
 	}
+	
+	@Override
+	public int changeState(String[] cbIds, ConfigSysOrderState before, ConfigSysOrderState after) {
+		return getSysOrderDAO().changeState(cbIds, before, after);
+	}
 
 	public SysOrderDAO getSysOrderDAO() {
 		return sysOrderDAO;

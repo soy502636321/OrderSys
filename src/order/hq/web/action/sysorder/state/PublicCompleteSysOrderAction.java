@@ -8,6 +8,7 @@ import order.hq.util.PaginatedList;
 import order.hq.web.action.sysorder.SysOrderAction;
 
 public class PublicCompleteSysOrderAction extends SysOrderAction {
+	private static final long serialVersionUID = 1L;
 	private static final Logger log = LoggerFactory.getLogger(PublicCompleteSysOrderAction.class);
 	
 	@Override

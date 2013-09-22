@@ -9,6 +9,7 @@ import order.hq.basic.database.entity.SysSection;
 import order.hq.basic.database.entity.SysUser;
 import order.hq.util.GlobalUtil;
 import order.hq.util.PropsParser;
+import order.hq.util.SystemUtil;
 
 public class SysUserVO {
 	// 管理员
@@ -66,13 +67,14 @@ public class SysUserVO {
 		// 初始化功能集合
 		menuFunctionList = new ArrayList<SysFunction>();
 		otherFunctionList = new ArrayList<SysFunction>();
-		for (SysFunction function : functionList) {
-			if (GlobalUtil.isMenu.equals(function.getFunctionType())) {
-				menuFunctionList.add(function);
-			} else {
-				otherFunctionList.add(function);
+		if (!SystemUtil.isNull(functionList)) {
+			for (SysFunction function : functionList) {
+				if (GlobalUtil.isMenu.equals(function.getFunctionType())) {
+					menuFunctionList.add(function);
+				} else {
+					otherFunctionList.add(function);
+				}
 			}
-
 		}
 	}
 

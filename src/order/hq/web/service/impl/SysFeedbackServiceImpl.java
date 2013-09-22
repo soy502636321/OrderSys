@@ -18,7 +18,7 @@ public class SysFeedbackServiceImpl implements SysFeedbackService {
 	
 	@Override
 	public PaginatedList querySysFeedback(PaginatedList paginatedList, ConfigSysFeedbackState state,
-			SysFeedbackVO sysFeedbackVO, SysUserVO sysUserVO) {
+			SysFeedbackVO sysFeedbackVO, SysUserVO sysUserVO, SysUserVO sysUserVO2) {
 		return getSysFeedbackDAO().querySysFeedback(paginatedList, state, sysFeedbackVO, sysUserVO);
 	}
 

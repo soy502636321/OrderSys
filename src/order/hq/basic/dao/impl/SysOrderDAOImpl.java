@@ -13,9 +13,12 @@ import order.hq.basic.vo.SysUserVO;
 import order.hq.util.DateUtil;
 import order.hq.util.HibernateUtil;
 import order.hq.util.PaginatedList;
+import order.hq.util.StringUtil;
+import order.hq.util.SystemUtil;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,6 +81,30 @@ public class SysOrderDAOImpl extends AbstractBaseDAO implements SysOrderDAO {
 			log.error("查询订单集合失败", e);
 			throw e;
 		}
+	}
+	
+	@Override
+	public int changeState(final String[] cbIds, final ConfigSysOrderState before,
+			final ConfigSysOrderState after) {
+		return getHibernateTemplate().execute(new HibernateCallback<Integer>() {
+
+			@Override
+			public Integer doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				StringBuffer sql = new StringBuffer("update sys_order as obj set obj.ORDER_STATE_PID = '").append(after.getStatePid()).append("' where (1 = 2");
+				if (!SystemUtil.isNull(cbIds)) {
+					for (String cbId: cbIds) {
+						sql.append(" or obj.ORDER_PID = '").append(cbId).append("'");
+					}
+				}
+				sql.append(")");
+				if (before != null) {
+					sql.append(" and (obj.ORDER_STATE_PID = '").append(before.getStatePid()).append("')");
+				}
+				SQLQuery sqlQuery = session.createSQLQuery(sql.toString());
+				return sqlQuery.executeUpdate();
+			}
+		});
 	}
 	
 	@Override

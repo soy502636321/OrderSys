@@ -30,7 +30,7 @@
 			class="order.hq.basic.database.entity.SysFunction" fetch="select">
 			<column name="PARENT_PID" />
 		</many-to-one>
-		<set lazy="true" inverse="true" name="children" order-by="functionPid">
+		<set name="children" inverse="true" lazy="false">
 			<key column="PARENT_PID" />
 			<one-to-many class="order.hq.basic.database.entity.SysFunction" />
 		</set>

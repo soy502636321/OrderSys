@@ -21,21 +21,21 @@ public class ForwardUtil {
 	public final static String FORWARD_EDIT_PAGE = "edit";
 	
 	// return to del page
-	public final static String FORWARD_DELETE_PAGE = "del";
+	public final static String FORWARD_DELETE_PAGE = "delete";
 	
 	// return to query page
 	public final static String FORWARD_QUERY_PAGE = "query";
 	
 	// return to save page
 	public final static String FORWARD_SAVE_PAGE = "save";
-
-
 	
-	// ACTION: SECTIONACTION
-	public final static String FORWARD_EDIT_FUNCTION_PAGE = "editFunction";
-	public final static String FORWARD_EDIT_FUNCTION_TREE_PAGE = "editFunctionTree";
-	public final static String FORWARD_EDIT_FUNCTION_ZTREE_PAGE = "editFunctionZTree";
-	public final static String FORWARD_EDIT_ORGAN_PAGE = "editOrganzation";
-//	public final static String FORWARD_COPY_SECTION_PAGE = "copySection";
+
+	public static final String FORWARD_SYSORDER_SHOW_PAGE = "sysOrder_Show";
+	
+	public static final String FORWARD_SYSSHOW_SHOW_PAGE = "sysShow_Show";
+
+	public static final String FORWARD_TRANSLATEDFILE_PAGE = "baseTranslatedFile_Query";
+
+	public static final String FORWARD_MASTERFILE_PAGE = "baseMasterFile_Query";
 
 }

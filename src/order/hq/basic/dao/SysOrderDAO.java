@@ -22,4 +22,7 @@ public interface SysOrderDAO extends BaseDAO {
 	public PaginatedList querySysOrder(PaginatedList paginatedList,
 			SysOrderVO vo, ConfigSysOrderState configSysOrderState,
 			SysUserVO sysUserVO);
+
+	public int changeState(String[] cbIds, ConfigSysOrderState before,
+			ConfigSysOrderState after);
 }

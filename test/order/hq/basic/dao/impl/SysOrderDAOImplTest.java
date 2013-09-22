@@ -24,7 +24,10 @@ public class SysOrderDAOImplTest {
 			"applicationContext-*.xml");
 	@Test
 	public void testFindAll() {
-		
+		SysOrderDAO sysOrderDAO = (SysOrderDAO) factory.getBean("sysOrderDAO");
+		ConfigSysOrderState accept = (ConfigSysOrderState) factory.getBean("accept");
+		int i = sysOrderDAO.changeState(null, null, accept);
+		System.out.println(i);
 	}
 
 	@Test

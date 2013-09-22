@@ -6,5 +6,5 @@ import order.hq.basic.vo.SysUserVO;
 import order.hq.util.PaginatedList;
 
 public interface SysFeedbackService {
-	public PaginatedList querySysFeedback(PaginatedList paginatedList, ConfigSysFeedbackState state, SysFeedbackVO sysFeedbackVO, SysUserVO sysUserVO);
+	public PaginatedList querySysFeedback(PaginatedList paginatedList, ConfigSysFeedbackState state, SysFeedbackVO sysFeedbackVO, SysUserVO sysUserVO, SysUserVO sysUserVO2);
 }

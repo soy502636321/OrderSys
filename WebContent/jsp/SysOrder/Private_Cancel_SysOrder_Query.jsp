@@ -30,8 +30,8 @@
 							title="<input type=checkbox class=checkbox name=cbAll onclick=changeCheckBoxAll(this,\"cbId\")>">
 						</display:column>
 						<display:column property="orderNo" title="订单编号" />
-						<display:column property="operTime" title="下单时间" />
-						<display:column property="submitTime" title="交稿时间" />
+						<display:column property="operTime" title="下单时间" format="{0,date,yyyy-MM-dd HH:mm}" />
+						<display:column property="submitTime" title="交稿时间" format="{0,date,yyy-MM-dd HH:mm}" />
 						<display:column property="startLanguage.languageName" title="原文语种" />
 						<display:column property="endLanguage.languageName" title="译文语种" />
 						<display:column property="baseMasterFileCount" title="原文数量" />
