@@ -8,23 +8,25 @@
 </head>
 
 <body>
-	<s:form action="publicInitateSysFeedbackAction" namespace="/sysFeedback">
-		<br>
-		<table>
-			<tr>
-				<td colspan="4">${ actionMessages[0] }${actionErrors[0]}</td>
-			</tr>
-		</table>
+	<s:form action="publicInitateSysFeedbackAction"
+		namespace="/sysFeedback">
 		<br>
 		<table style="width: 100%">
 			<tr>
-				<td>
-					<s:submit value="查看指示" action="publicInitateSysOrderAction!findSysShow" />
+				<td colspan="4">${ actionMessages[0] }${actionErrors[0]}</td>
+			</tr>
+			<tr>
+				<td><order:buttons function="8a80c97b4120bee5014120befc9d0001">
+						<order:button name="处理反馈" mode="more" location="this"></order:button>
+						<order:button name="查看指示" mode="single" location="other"></order:button>
+						<order:button name="接受订单" mode="more" location="this"></order:button>
+						<order:button name="作废订单" mode="more" location="this"></order:button>
+						<order:button name="查看原文" mode="single" location="other"></order:button>
+					</order:buttons>
 				</td>
 			</tr>
 			<tr>
-				<td>
-					<display:table name="paginatedList" class="simple"
+				<td><display:table name="paginatedList" class="simple"
 						requestURI="newOrderAction!query">
 						<display:column property="feedbackPid"
 							decorator="order.hq.common.displaytag.CheckBoxDecorator"

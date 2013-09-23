@@ -21,6 +21,13 @@ public class SysFeedbackServiceImpl implements SysFeedbackService {
 			SysFeedbackVO sysFeedbackVO, SysUserVO sysUserVO, SysUserVO sysUserVO2) {
 		return getSysFeedbackDAO().querySysFeedback(paginatedList, state, sysFeedbackVO, sysUserVO);
 	}
+	
+	@Override
+	public int changeState(String[] cbId,
+			ConfigSysFeedbackState initateFeedback,
+			ConfigSysFeedbackState handleFeedback, SysUserVO loginVO) {
+		return getSysFeedbackDAO().changeState(cbId, initateFeedback, handleFeedback, loginVO);
+	}
 
 	public SysFeedbackDAO getSysFeedbackDAO() {
 		return sysFeedbackDAO;

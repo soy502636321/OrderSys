@@ -2,18 +2,19 @@
 Navicat MySQL Data Transfer
 
 Source Server         : MySQL
-Source Server Version : 50171
+Source Server Version : 50533
 Source Host           : localhost:3306
 Source Database       : order
 
 Target Server Type    : MYSQL
-Target Server Version : 50171
+Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2013-09-23 07:54:34
+Date: 2013-09-23 18:05:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
 -- ----------------------------
 -- Table structure for `base_language`
 -- ----------------------------
@@ -225,6 +226,8 @@ CREATE TABLE `sys_function` (
 -- ----------------------------
 -- Records of sys_function
 -- ----------------------------
+INSERT INTO `sys_function` VALUES ('4028848c4149829b01414982a24f0001', '处理反馈', '', '02', '反馈管理》新反馈》处理反馈', '8a80c97b4120c105014120c11c700001', '2013-09-23 14:30:00');
+INSERT INTO `sys_function` VALUES ('4028848c414987a901414987b0600001', '反馈完成', '', '02', '反馈管理》处理中》反馈完成', '8a80c97b4120c1a5014120c1bbfc0001', '2013-09-23 14:35:31');
 INSERT INTO `sys_function` VALUES ('8a80c97b411f856e01411f8582eb0001', '系统管理', null, '01', '系统管理', null, '2013-09-22 10:53:13');
 INSERT INTO `sys_function` VALUES ('8a80c97b411f8a4901411f8a5cdd0001', '用户管理', '/system/sysUserAction!query', '01', '系统管理》用户管理', '8a80c97b411f856e01411f8582eb0001', '2013-09-22 11:10:17');
 INSERT INTO `sys_function` VALUES ('8a80c97b411f8ac601411f8ade130001', '语种管理', '/system/baseLanguageAction!query', '01', '系统管理》语种管理', '8a80c97b411f856e01411f8582eb0001', '2013-09-22 11:10:21');

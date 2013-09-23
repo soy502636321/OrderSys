@@ -53,7 +53,10 @@ public class SysFeedbackDAOImplTest {
 
 	@Test
 	public void testUpdate() {
-		
+		SysFeedbackDAO sysFeedbackDAO = (SysFeedbackDAO) factory.getBean("sysFeedbackDAO");
+		ConfigSysFeedbackState handleFeedback = (ConfigSysFeedbackState) factory.getBean("handleFeedback");
+		int i = sysFeedbackDAO.changeState(null, null, handleFeedback, null);
+		System.out.println(i);
 	}
 
 	@Test

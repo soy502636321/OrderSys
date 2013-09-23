@@ -27,4 +27,10 @@ public class PublicInitateSysFeedbackAction extends SysFeedbackAction {
 		return ForwardUtil.FORWARD_QUERY_PAGE;
 	}
 
+	public String handleSysFeedback() {
+		log.debug("ACTION:");
+		int i = getSysFeedbackService().changeState(getCbId(), getInitateFeedback(), getHandleFeedback(), getLoginVO());
+		addActionMessage("成功接受【" + i + "】个反馈");
+		return query();
+	}
 }

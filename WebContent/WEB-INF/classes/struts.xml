@@ -75,20 +75,6 @@
 		</action>
 	</package>
 
-	<!-- <package name="systemModel" extends="iterceptor" namespace="/system"> 
-		<action name="sectionAction" class="order.hq.web.action.SectionAction"> <result 
-		name="query">/jsp/system/section/sectionQuery.jsp</result> <result name="editFunction">/jsp/system/section/editFunction.jsp</result> 
-		<result name="editFunctionTree">/jsp/system/section/editFunctionTree.jsp</result> 
-		<result name="editFunctionZTree">/jsp/system/section/editFunctionZTree.jsp</result> 
-		<result name="editOrganzation">/jsp/system/section/editOrganzation.jsp</result> 
-		<result name="*">/jsp/system/section/section.jsp</result> </action> <action 
-		name="functionAction" class="order.hq.web.action.FunctionAction"> <result 
-		name="query">/jsp/system/function/functionQuery.jsp</result> <result name="*">/jsp/system/function/function.jsp</result> 
-		</action> <action name="organzationAction" class="order.hq.web.action.OrganzationAction"> 
-		<result name="query">/jsp/system/organzation/organzationQuery.jsp</result> 
-		<result name="*">/jsp/system/organzation/organzation.jsp</result> </action> 
-		</package> -->
-
 	<!-- 订单模块 -->
 	<package name="sysOrderModel" extends="iterceptor" namespace="/sysOrder">
 		<action name="publicInitateSysOrderAction"

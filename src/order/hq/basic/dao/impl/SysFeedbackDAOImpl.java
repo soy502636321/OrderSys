@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.exception.DataException;
 import org.slf4j.Logger;
@@ -19,6 +20,8 @@ import order.hq.basic.vo.SysFeedbackVO;
 import order.hq.basic.vo.SysUserVO;
 import order.hq.util.HibernateUtil;
 import order.hq.util.PaginatedList;
+import order.hq.util.StringUtil;
+import order.hq.util.SystemUtil;
 
 public class SysFeedbackDAOImpl extends AbstractBaseDAO implements SysFeedbackDAO {
 	private static final Logger log = LoggerFactory.getLogger(SysFeedbackDAOImpl.class);
@@ -65,6 +68,33 @@ public class SysFeedbackDAOImpl extends AbstractBaseDAO implements SysFeedbackDA
 				paginatedList.setFullListSize(count);
 				
 				return paginatedList;
+			}
+		});
+	}
+	
+	@Override
+	public int changeState(final String[] cbIds,
+			final ConfigSysFeedbackState before,
+			final ConfigSysFeedbackState after, SysUserVO loginVO) {
+		return getHibernateTemplate().execute(new HibernateCallback<Integer>() {
+
+			@Override
+			public Integer doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				StringBuffer sql = new StringBuffer("update SYS_FEEDBACK as obj set obj.STATE_PID = '").
+							append(after.getStatePid()).append("' where (1 = 2");
+				if (!SystemUtil.isNull(cbIds)) {
+					for (String cbId : cbIds) {
+						sql.append(" or obj.FEEDBACK_PID = '").append(cbId).append("'");
+					}
+				}
+				sql.append(")");
+				if (before != null) {
+					sql.append(" and (obj.STATE_PID = '").append(before.getStatePid()).append("')");
+				}
+				
+				SQLQuery sqlQuery = session.createSQLQuery(sql.toString());
+				return sqlQuery.executeUpdate(); 
 			}
 		});
 	}

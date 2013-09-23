@@ -10,4 +10,8 @@ public interface SysFeedbackDAO extends BaseDAO {
 	public PaginatedList querySysFeedback(PaginatedList paginatedList,
 			ConfigSysFeedbackState state, SysFeedbackVO sysFeedbackVO, SysUserVO sysUserVO);
 
+	public int changeState(String[] cbId,
+			ConfigSysFeedbackState initateFeedback,
+			ConfigSysFeedbackState handleFeedback, SysUserVO loginVO);
+
 }
