@@ -19,6 +19,8 @@ public class GlobalUtil {
 	
 	public static final String isBtn = "02";
 	
+	public static final String isCfg = "03";
+	
 	public static final String isNormal = "01";
 	
 	

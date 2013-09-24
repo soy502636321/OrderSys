@@ -19,6 +19,7 @@ import order.hq.basic.vo.SysUserVO;
 import order.hq.util.HibernateUtil;
 import order.hq.util.PaginatedList;
 import order.hq.util.StringUtil;
+import order.hq.util.SystemUtil;
 
 public class BaseMasterFileDAOImpl extends AbstractBaseDAO implements BaseMasterFileDAO {
 	private static final Logger log = LoggerFactory.getLogger(BaseMasterFileDAOImpl.class);
@@ -70,6 +71,24 @@ public class BaseMasterFileDAOImpl extends AbstractBaseDAO implements BaseMaster
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<BaseMasterFile> findByPK(String[] cbIds) {
+		try {
+			StringBuffer hql = new StringBuffer("select obj from BaseMasterFile as obj where (1 = 2");
+			if (!SystemUtil.isNull(cbIds)) {
+				for (String cbId : cbIds) {
+					hql.append(" or obj.masterFilePid = '").append(cbId).append("'");
+				}
+			}
+			hql.append(")");
+			return getHibernateTemplate().find(hql.toString());
+		} catch (DataAccessException e) {
+			log.debug("", e);
+			throw e;
+		}
+	}
+	
 	@Override
 	public Logger getLogger() {
 		return log;

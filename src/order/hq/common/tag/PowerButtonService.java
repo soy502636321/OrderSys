@@ -100,9 +100,9 @@ public class PowerButtonService extends Component {
 							}
 						} else if ("all".equals(getMode())) {
 							if ("this".equals(getLocation())) {
-								start.append("onclick=\"return openThis(this);\" ");
+								start.append("onclick=\"return powerAllSelect(this);\" ");
 							} else {
-								start.append("onclick=\"return openBlank(this);\" ");
+								start.append("onclick=\"return powerAllSelect(this, true);\" ");
 							}
 						} else if ("del".equals(getMode())) {
 							start.append("onclick=\"return deleteDialog(this);\"");

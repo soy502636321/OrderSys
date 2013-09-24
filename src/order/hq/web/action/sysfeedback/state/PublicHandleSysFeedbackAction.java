@@ -19,4 +19,11 @@ public class PublicHandleSysFeedbackAction extends SysFeedbackAction {
 		setPaginatedList(paginatedList);
 		return ForwardUtil.FORWARD_QUERY_PAGE;
 	}
+	
+	public String completeSysFeedback() {
+		log.debug("ACTION:");
+		int i = getSysFeedbackService().changeState(getCbId(), getHandleFeedback(), getCompleteFeedback(), getLoginVO());
+		addActionMessage("成功完成【" + i + "】个反馈");
+		return query();
+	}
 }

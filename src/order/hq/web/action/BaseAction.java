@@ -1,5 +1,8 @@
 package order.hq.web.action;
 
+import java.io.File;
+import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +21,7 @@ import order.hq.web.service.BaseTranslatedFileService;
 import order.hq.web.service.ConfigSysOrderStateService;
 import order.hq.web.service.SysOrderService;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -26,6 +30,8 @@ import com.opensymphony.xwork2.ActionSupport;
 public class BaseAction extends ActionSupport implements SessionAware,
 		ServletRequestAware {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Map<String, Object> session;
 	private HttpServletRequest request;
 
@@ -50,6 +56,15 @@ public class BaseAction extends ActionSupport implements SessionAware,
 	private ConfigSysOrderState turnover;
 	private ConfigSysOrderState accept;
 	private ConfigSysOrderState initate;
+
+	// 下载文件流对象
+	private InputStream downloadStream;
+	private String downloadFileName;
+
+	// 处理上传文件的对象
+	private List<File> upload;
+	private List<String> uploadFileName;
+	private List<String> uploadContentType;
 
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -201,6 +216,46 @@ public class BaseAction extends ActionSupport implements SessionAware,
 	public void setBaseTranslatedFileService(
 			BaseTranslatedFileService baseTranslatedFileService) {
 		this.baseTranslatedFileService = baseTranslatedFileService;
+	}
+
+	public InputStream getDownloadStream() {
+		return downloadStream;
+	}
+
+	public void setDownloadStream(InputStream downloadStream) {
+		this.downloadStream = downloadStream;
+	}
+
+	public String getDownloadFileName() {
+		return downloadFileName;
+	}
+
+	public void setDownloadFileName(String downloadFileName) {
+		this.downloadFileName = downloadFileName;
+	}
+
+	public List<File> getUpload() {
+		return upload;
+	}
+
+	public void setUpload(List<File> upload) {
+		this.upload = upload;
+	}
+
+	public List<String> getUploadFileName() {
+		return uploadFileName;
+	}
+
+	public void setUploadFileName(List<String> uploadFileName) {
+		this.uploadFileName = uploadFileName;
+	}
+
+	public List<String> getUploadContentType() {
+		return uploadContentType;
+	}
+
+	public void setUploadContentType(List<String> uploadContentType) {
+		this.uploadContentType = uploadContentType;
 	}
 
 }

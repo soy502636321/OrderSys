@@ -12,9 +12,8 @@
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 
 	<constant name="struts.objectFactory" value="spring"></constant>
-
-
 	<constant name="struts.devMode" value="false" />
+	<constant name= "struts.multipart.maxSize" value="1073741824" />
 
 
 
@@ -47,8 +46,16 @@
 			<result name="invalid.token">error.jsp</result>
 			<result name="baseMasterFile_Query">/jsp/BaseMasterFile/BaseMasterFile_Query.jsp</result>
 			<result name="baseTranslatedFile_Query">/jsp/BaseTranslatedFile/BaseTranslatedFile_Query.jsp</result>
+			<result name="baseMasterFile_Show_Query">/jsp/BaseMasterFile/BaseMasterFile_Show_Query.jsp</result>
+			<result name="baseTranslatedFile_Show_Query">/jsp/BaseTranslatedFile/BaseTranslatedFile_Show_Query.jsp</result>
 			<result name="sysOrder_Show">/jsp/SysOrder/SysOrder_Show.jsp</result>
 			<result name="sysShow_Show">/jsp/SysShow/SysShow_Show.jsp</result>
+			<result name="download" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">downloadStream</param>
+				<param name="contentDisposition">attachment;filename="${downloadFileName}"</param>
+				<param name="bufferSize">4096</param>
+			</result>
 		</global-results>
 
 
@@ -89,8 +96,8 @@
 		</action>
 		<action name="publicTurnoverSysOrderAction"
 			class="order.hq.web.action.sysorder.state.PublicTurnoverSysOrderAction">
-			<result name="query">/jsp/SysOrder/Public_Turnover_SysOrder_Query.jsp
-			</result>
+			<result name="query">/jsp/SysOrder/Public_Turnover_SysOrder_Query.jsp</result>
+			<result name="translatedFile_Query">/jsp/BaseTranslatedFile/BaseTranslatedFile_Query.jsp</result>
 		</action>
 		<action name="publicCompleteSysOrderAction"
 			class="order.hq.web.action.sysorder.state.PublicCompleteSysOrderAction">
@@ -169,6 +176,21 @@
 		<action name="baseLanguageAction" class="order.hq.web.action.system.BaseLanguageAction">
 			<result name="query">/jsp/System/BaseLanguage/BaseLanguage_Query.jsp
 			</result>
+		</action>
+	</package>
+	
+	<package name="baseTranslatedFileModel" extends="iterceptor" namespace="/translatedFile">
+		<action name="baseTranslatedFileAction" class="order.hq.web.action.file.BaseTranslatedFileAction">
+			<result name="query">/jsp/BaseTranslatedFile/BaseTranslatedFile_Query.jsp</result>
+			<result name="add">/jsp/BaseTranslatedFile/BaseTranslatedFile_Add.jsp</result>
+			<result name="show_Query">/jsp/BaseTranslatedFile/BaseTranslatedFile_Show_Query.jsp</result>
+		</action>
+	</package>
+
+	<package name="baseMasterFileModel" extends="iterceptor" namespace="/masterFileAction">
+		<action name="baseMasterFileAction" class="order.hq.web.action.file.BaseMasterFileAction">
+			<result name="query">/jsp/BaseMasterFile/BaseMasterFile_Query.jsp</result>
+			<result name="show_Query">/jsp/BaseMasterFile/BaseMasterFile_Show_Query.jsp</result>
 		</action>
 	</package>
 

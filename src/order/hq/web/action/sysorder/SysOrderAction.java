@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import order.hq.basic.database.entity.ConfigSysOrderState;
 import order.hq.basic.vo.BaseMasterFileVO;
+import order.hq.basic.vo.BaseTranslatedFileVO;
 import order.hq.basic.vo.SysOrderVO;
 import order.hq.util.ForwardUtil;
 import order.hq.util.PaginatedList;
@@ -42,7 +43,18 @@ public class SysOrderAction extends BaseAction {
 
 	public String queryBaseTranslatedFile() {
 		log.debug("ACTION:查看译文列表");
-		return ForwardUtil.FORWARD_TRANSLATEDFILE_PAGE;
+		log.debug("ACTION:");
+		if (!SystemUtil.isNull(getCbId())) {
+			BaseTranslatedFileVO baseTranslatedFileVO = new BaseTranslatedFileVO();
+			baseTranslatedFileVO.setSysOrderPid(getCbId()[0]);
+			PaginatedList paginatedList = new PaginatedList(1);
+			paginatedList = getBaseTranslatedFileService().queryBaseTranslatedFile(paginatedList, baseTranslatedFileVO, getLoginVO());
+			setPaginatedList(paginatedList);
+			setBaseTranslatedFileVO(baseTranslatedFileVO);
+		} else {
+			addActionError("请先选择订单记录");
+		}
+		return ForwardUtil.FORWARD_TRANSLATEDFILE_SHOW_PAGE;
 	}
 
 	public String queryBaseMasterFile() {
@@ -58,7 +70,7 @@ public class SysOrderAction extends BaseAction {
 		} else {
 			addActionError("请先选择一个订单");
 		}
-		return ForwardUtil.FORWARD_MASTERFILE_PAGE;
+		return ForwardUtil.FORWARD_MASTERFILE_SHOW_PAGE;
 	}
 	
 	/**

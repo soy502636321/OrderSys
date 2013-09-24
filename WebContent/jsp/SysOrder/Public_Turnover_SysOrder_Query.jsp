@@ -19,7 +19,8 @@
 						<order:button name="查看订单" mode="single" location="other"></order:button>
 						<order:button name="查看指示" mode="single" location="other"></order:button>
 						<order:button name="订单完成" mode="more" location="this"></order:button>
-						<order:button name="查看原文" mode="single" location="other"></order:button>
+						<order:button name="原文管理" mode="single" location="other"></order:button>
+						<order:button name="译文管理" mode="single" location="other"></order:button>
 					</order:buttons></td>
 			</tr>
 			<tr>

@@ -2,20 +2,24 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>订单编号<s:property value="baseMasterFileVO.sysOrderNo" />的原文列表</title>
+<title>译文列表</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 </head>
 
 <body>
-	<s:form action="publicInitateSysOrderAction" namespace="/sysOrder">
+	<s:form action="baseMasterFileAction" namespace="/masterFileAction">
+		<br>
+		<s:hidden name="baseTranslatedFileVO.sysOrderPid" />
 		<table style="width: 100%">
 			<tr>
 				<td colspan="4">${ actionMessages[0] }${actionErrors[0]}</td>
 			</tr>
 			<tr>
-				<td></td>
+				<td><order:buttons function="4028848c414eccdf01414ecce5f60001">
+						<order:button name="下载原文" mode="more" location="other"></order:button>
+					</order:buttons></td>
 			</tr>
 			<tr>
 				<td><display:table name="paginatedList" class="simple"
@@ -31,7 +35,8 @@
 							format="{0,date,yyyy-MM-dd HH:mm}" />
 						<display:column property="operUser.userName" title="上传人" />
 						<display:column property="downloadSize" title="下载次数" />
-					</display:table></td>
+					</display:table>
+				</td>
 			</tr>
 		</table>
 	</s:form>

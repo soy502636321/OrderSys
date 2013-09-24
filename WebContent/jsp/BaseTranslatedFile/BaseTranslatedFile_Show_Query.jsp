@@ -17,9 +17,7 @@
 				<td colspan="4">${ actionMessages[0] }${actionErrors[0]}</td>
 			</tr>
 			<tr>
-				<td><order:buttons function="4028848c414eca6b01414eca75160001">
-						<order:button name="增加译文" mode="all" location="this"></order:button>
-						<order:button name="删除译文" mode="more" location="this"></order:button>
+				<td><order:buttons function="4028848c414f5a4701414f5a5c320001">
 						<order:button name="下载译文" mode="more" location="other"></order:button>
 					</order:buttons></td>
 			</tr>

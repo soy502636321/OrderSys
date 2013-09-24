@@ -1,5 +1,6 @@
 package order.hq.basic.database.entity;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,13 +12,25 @@ public class BaseTranslatedFile implements Serializable {
 	private String translatedFileName;
 	private long translatedFileSize;
 	private String translatedFileLocation;
-	
+
 	private Date operTime;
 	private SysUser operUser;
 	private long downloadSize;
 
 	private SysOrder sysOrder;
 	private SysFeedback sysFeedback;
+	
+	public BaseTranslatedFile() {
+	}
+
+	public BaseTranslatedFile(File saveFile, String relatively, SysOrder sysOrder, SysUser sysUser) {
+		this.sysOrder = sysOrder;
+		this.operUser = sysUser;
+		this.operTime = new Date();
+		translatedFileName = saveFile.getName();
+		translatedFileSize = saveFile.length();
+		translatedFileLocation = relatively;
+	}
 
 	public String getTranslatedFilePid() {
 		return translatedFilePid;
@@ -94,8 +107,5 @@ public class BaseTranslatedFile implements Serializable {
 	public void setDownloadSize(long downloadSize) {
 		this.downloadSize = downloadSize;
 	}
-	
-	
 
-	
 }

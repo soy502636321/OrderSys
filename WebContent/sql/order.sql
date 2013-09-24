@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2013-09-23 18:05:17
+Date: 2013-09-24 18:04:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -55,7 +55,7 @@ CREATE TABLE `base_master_file` (
 -- ----------------------------
 -- Records of base_master_file
 -- ----------------------------
-INSERT INTO `base_master_file` VALUES ('ff80808140fd190b0140fd191f3d0001', '测试文件.txt', '400', '电脑中', 'ff80808140fc7ed30140fc7ee7040001', '2013-09-17', '0', 'admin');
+INSERT INTO `base_master_file` VALUES ('ff80808140fd190b0140fd191f3d0001', '测试文件.txt', '400', 'BaseMasterFile/test.txt', '8a80cd8e40fd2c8d0140fd2ca3170001', '2013-09-17', '0', 'admin');
 
 -- ----------------------------
 -- Table structure for `base_organ`
@@ -93,7 +93,7 @@ CREATE TABLE `base_translated_file` (
   `TRANSLATED_FILE_LOCATION` longtext,
   `ORDER_PID` varchar(50) DEFAULT NULL,
   `FEEDBACK_PID` varchar(50) DEFAULT NULL,
-  `OPER_TIME` date DEFAULT NULL,
+  `OPER_TIME` datetime DEFAULT NULL,
   `DOWNLOAD_SIZE` bigint(20) DEFAULT NULL,
   `OPER_USER_PID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`TRANSLATED_FILE_PID`),
@@ -108,6 +108,8 @@ CREATE TABLE `base_translated_file` (
 -- ----------------------------
 -- Records of base_translated_file
 -- ----------------------------
+INSERT INTO `base_translated_file` VALUES ('4028848c414f371c01414f3807220001', 'sqlnet.ora', '215', 'BaseTranslatedFile\\2013-09-24\\7f2c7c65-3edb-4cd0-8aa9-dd8dd9717c99\\sqlnet.ora', '8a80cd8e40fd2c8d0140fd2ca3170001', null, '2013-09-24 00:00:00', '0', 'admin');
+INSERT INTO `base_translated_file` VALUES ('4028848c414f371c01414f3957be0002', 'sqlnet.ora', '215', 'BaseTranslatedFile\\2013-09-24\\72379efe-026b-400a-b766-c333a10afbae\\sqlnet.ora', '8a80cd8e40fd2c8d0140fd2ca3170001', null, '2013-09-24 00:00:00', '0', 'admin');
 
 -- ----------------------------
 -- Table structure for `config_sysfeedback_state`
@@ -202,7 +204,7 @@ CREATE TABLE `sys_feedback` (
 -- ----------------------------
 -- Records of sys_feedback
 -- ----------------------------
-INSERT INTO `sys_feedback` VALUES ('8a80c97b41219b290141219b4e970001', '8a80cd8e40fd2c8d0140fd2ca3170001', '8a80c97b4120a826014120a83cc30001');
+INSERT INTO `sys_feedback` VALUES ('8a80c97b41219b290141219b4e970001', '8a80cd8e40fd2c8d0140fd2ca3170001', '8a80c97b4120aa73014120aa8c600001');
 INSERT INTO `sys_feedback` VALUES ('8a80cf0f413e4a7b01413e4aa7330001', '8a80cd8e40fd2c8d0140fd2ca3170001', '8a80c97b4120a8b6014120a8cc410001');
 INSERT INTO `sys_feedback` VALUES ('8a80cf0f413e4b1601413e4b2fbc0001', '8a80cd8e40fd2c8d0140fd2ca3170001', '8a80c97b4120aa73014120aa8c600001');
 
@@ -226,8 +228,21 @@ CREATE TABLE `sys_function` (
 -- ----------------------------
 -- Records of sys_function
 -- ----------------------------
-INSERT INTO `sys_function` VALUES ('4028848c4149829b01414982a24f0001', '处理反馈', '', '02', '反馈管理》新反馈》处理反馈', '8a80c97b4120c105014120c11c700001', '2013-09-23 14:30:00');
-INSERT INTO `sys_function` VALUES ('4028848c414987a901414987b0600001', '反馈完成', '', '02', '反馈管理》处理中》反馈完成', '8a80c97b4120c1a5014120c1bbfc0001', '2013-09-23 14:35:31');
+INSERT INTO `sys_function` VALUES ('4028848c4149829b01414982a24f0001', '处理反馈', 'publicInitateSysFeedbackAction!handleSysFeedback', '02', '反馈管理》新反馈》处理反馈', '8a80c97b4120c105014120c11c700001', '2013-09-23 14:30:00');
+INSERT INTO `sys_function` VALUES ('4028848c414987a901414987b0600001', '反馈完成', 'publicHandleSysFeedbackAction!completeSysFeedback', '02', '反馈管理》处理中》反馈完成', '8a80c97b4120c1a5014120c1bbfc0001', '2013-09-23 14:35:31');
+INSERT INTO `sys_function` VALUES ('4028848c414dcfb601414dcfbd100001', '译文管理', 'publicTurnoverSysOrderAction!queryBaseTranslatedFile', '02', '订单管理》已成交》译文管理', '8a80cd8e40fd36f50140fd3708870001', '2013-09-24 10:32:42');
+INSERT INTO `sys_function` VALUES ('4028848c414de8df01414de8e6680001', '增加译文', 'baseTranslatedFileAction!add', '02', '》译文管理》增加译文', '4028848c414eca6b01414eca75160001', '2013-09-24 11:00:10');
+INSERT INTO `sys_function` VALUES ('4028848c414deb7301414deb79770001', '删除译文', 'baseTranslatedFileAction!delete', '02', '》译文管理》删除译文', '4028848c414eca6b01414eca75160001', '2013-09-24 11:02:59');
+INSERT INTO `sys_function` VALUES ('4028848c414debd801414debdea90001', '下载译文', 'baseTranslatedFileAction!download', '02', '》译文管理》下载译文', '4028848c414eca6b01414eca75160001', '2013-09-24 11:03:25');
+INSERT INTO `sys_function` VALUES ('4028848c414eca6b01414eca75160001', '译文管理', null, '03', '》译文管理', null, '2013-09-24 15:06:33');
+INSERT INTO `sys_function` VALUES ('4028848c414eccdf01414ecce5f60001', '原文管理', null, '03', '》原文管理', null, '2013-09-24 15:09:13');
+INSERT INTO `sys_function` VALUES ('4028848c414ecf0a01414ecf11040001', '下载原文', 'baseMasterFileAction!download', '02', '》原文管理》下载原文', '4028848c414eccdf01414ecce5f60001', '2013-09-24 15:11:35');
+INSERT INTO `sys_function` VALUES ('4028848c414f47b801414f47c3650001', '订单原文', null, '02', '反馈管理》新反馈》订单原文', '8a80c97b4120c105014120c11c700001', '2013-09-24 17:23:25');
+INSERT INTO `sys_function` VALUES ('4028848c414f49e201414f49e8f40001', '订单译文', null, '02', '反馈管理》新反馈》订单译文', '8a80c97b4120c105014120c11c700001', '2013-09-24 17:25:45');
+INSERT INTO `sys_function` VALUES ('4028848c414f4d1101414f4d18430001', '原文管理', null, '03', '》原文管理(显示)', null, '2013-09-24 17:29:14');
+INSERT INTO `sys_function` VALUES ('4028848c414f4e3d01414f4e449d0001', '下载原文', 'baseMasterFileAction!download', '03', '》原文管理(显示)》下载原文', '4028848c414f4d1101414f4d18430001', '2013-09-24 17:30:31');
+INSERT INTO `sys_function` VALUES ('4028848c414f5a4701414f5a5c320001', '译文管理', null, '03', '》译文管理(显示)', null, '2013-09-24 17:43:43');
+INSERT INTO `sys_function` VALUES ('4028848c414f5c6e01414f5c75ea0001', '下载译文', 'baseTranslatedFileAction!download', '02', '》译文管理(显示)》下载译文', '4028848c414f5a4701414f5a5c320001', '2013-09-24 17:46:01');
 INSERT INTO `sys_function` VALUES ('8a80c97b411f856e01411f8582eb0001', '系统管理', null, '01', '系统管理', null, '2013-09-22 10:53:13');
 INSERT INTO `sys_function` VALUES ('8a80c97b411f8a4901411f8a5cdd0001', '用户管理', '/system/sysUserAction!query', '01', '系统管理》用户管理', '8a80c97b411f856e01411f8582eb0001', '2013-09-22 11:10:17');
 INSERT INTO `sys_function` VALUES ('8a80c97b411f8ac601411f8ade130001', '语种管理', '/system/baseLanguageAction!query', '01', '系统管理》语种管理', '8a80c97b411f856e01411f8582eb0001', '2013-09-22 11:10:21');
@@ -253,7 +268,7 @@ INSERT INTO `sys_function` VALUES ('8a80cf0f413ffe9a01413ffeb41b0001', '查看�
 INSERT INTO `sys_function` VALUES ('8a80cf0f41400102014140011a3d0001', '订单成交', 'publicAcceptSysOrderAction!turnoverSysOrder', '02', '订单管理》已接受》订单成交', 'ff80808140fd20c80140fd20dada0001', '2013-09-27 18:13:43');
 INSERT INTO `sys_function` VALUES ('8a80cf0f414001a401414001bde00001', '作废订单', 'publicAcceptSysOrderAction!cancelSysOrder', '02', '订单管理》已接受》作废订单', 'ff80808140fd20c80140fd20dada0001', '2013-09-27 18:13:46');
 INSERT INTO `sys_function` VALUES ('8a80cf0f414002120141400229aa0001', '查看原文', 'publicAcceptSysOrderAction!queryBaseMasterFile', '02', '订单管理》已接受》查看原文', 'ff80808140fd20c80140fd20dada0001', '2013-09-27 18:13:49');
-INSERT INTO `sys_function` VALUES ('8a80cf0f41400a350141400a4c5e0001', '查看原文', 'publicTurnoverSysOrderAction!queryBaseMasterFile', '02', '订单管理》已成交》查看原文', '8a80cd8e40fd36f50140fd3708870001', null);
+INSERT INTO `sys_function` VALUES ('8a80cf0f41400a350141400a4c5e0001', '原文管理', 'publicTurnoverSysOrderAction!queryBaseMasterFile', '02', '订单管理》已成交》原文管理', '8a80cd8e40fd36f50140fd3708870001', null);
 INSERT INTO `sys_function` VALUES ('8a80cf0f41400c5e0141400c75a60001', '查看订单', 'publicTurnoverSysOrderAction!findSysOrder', '02', '订单管理》已成交》查看订单', '8a80cd8e40fd36f50140fd3708870001', '2013-09-21 18:24:20');
 INSERT INTO `sys_function` VALUES ('8a80cf0f41400e4e0141400e665a0001', '查看指示', 'publicTurnoverSysOrderAction!findSysShow', '02', '订单管理》已成交》查看指示', '8a80cd8e40fd36f50140fd3708870001', '2013-09-21 18:26:27');
 INSERT INTO `sys_function` VALUES ('8a80cf0f41400f1e0141400f36ca0001', '订单完成', 'publicTurnoverSysOrderAction!completeSysOrder', '02', '订单管理》已成交》订单完成', '8a80cd8e40fd36f50140fd3708870001', '2013-09-21 18:27:20');
@@ -303,7 +318,7 @@ CREATE TABLE `sys_order` (
 -- ----------------------------
 INSERT INTO `sys_order` VALUES ('8a80cd8e40fd2c8d0140fd2ca3170001', 'ff80808140fc38580140fc38694d0001', '20130908-2', '2013-09-08 18:44:55', 'admin', 'ff80808140fcf97f0140fcf993110001', 'ff80808140fcfa350140fcfa475d0001', '2013-09-25 18:50:42', null);
 INSERT INTO `sys_order` VALUES ('8a80cd8e40fd30ea0140fd30ff0e0001', 'ff80808140fc3a780140fc3a88c20001', '20130908-3', '2013-09-08 18:49:40', 'admin', 'ff80808140fcf97f0140fcf993110001', 'ff80808140fcfa350140fcfa475d0001', '2013-09-08 18:49:41', null);
-INSERT INTO `sys_order` VALUES ('8a80cd8e40fd315e0140fd3172d70001', 'ff80808140fc3b0d0140fc3b1e5a0001', '20130908-4', '2013-09-08 18:50:10', 'admin', 'ff80808140fcf97f0140fcf993110001', 'ff80808140fcfa350140fcfa475d0001', '2013-09-08 18:50:11', null);
+INSERT INTO `sys_order` VALUES ('8a80cd8e40fd315e0140fd3172d70001', 'ff80808140fc38580140fc38694d0001', '20130908-4', '2013-09-08 18:50:10', 'admin', 'ff80808140fcf97f0140fcf993110001', 'ff80808140fcfa350140fcfa475d0001', '2013-09-08 18:50:11', null);
 INSERT INTO `sys_order` VALUES ('8a80cd8e40fd31be0140fd31d3460001', 'ff80808140fc3b0d0140fc3b1e5a0001', '20130908-5', '2013-09-08 18:50:35', 'admin', 'ff80808140fcf97f0140fcf993110001', 'ff80808140fcfa350140fcfa475d0001', '2013-09-08 18:50:35', null);
 INSERT INTO `sys_order` VALUES ('ff80808140fc7ed30140fc7ee7040001', 'ff80808140fc3a780140fc3a88c20001', '20130908-0', '2013-09-08 15:35:09', 'admin', 'ff80808140fcfa350140fcfa475d0001', 'ff80808140fcf97f0140fcf993110001', '2013-09-10 17:44:37', null);
 

@@ -37,5 +37,9 @@ public class ForwardUtil {
 	public static final String FORWARD_TRANSLATEDFILE_PAGE = "baseTranslatedFile_Query";
 
 	public static final String FORWARD_MASTERFILE_PAGE = "baseMasterFile_Query";
+	
+	public static final String FORWARD_TRANSLATEDFILE_SHOW_PAGE = "baseTranslatedFile_Show_Query";
+	
+	public static final String FORWARD_MASTERFILE_SHOW_PAGE = "baseMasterFile_Show_Query";
 
 }

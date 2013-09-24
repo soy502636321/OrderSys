@@ -248,3 +248,15 @@ function powerDialogSingleSelect(obj, msg, location) {
 //		
 //	}
 }
+
+function powerAllSelect(obj, location) {
+	if (obj) {
+		form = $(obj).parents('form:first');
+		if (location) {
+			$(form).attr('target', '_blank');
+		} else {
+			$(form).attr('target', '');
+		}
+	}
+	return true;
+}
