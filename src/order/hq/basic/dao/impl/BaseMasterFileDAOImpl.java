@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -85,6 +86,32 @@ public class BaseMasterFileDAOImpl extends AbstractBaseDAO implements BaseMaster
 			return getHibernateTemplate().find(hql.toString());
 		} catch (DataAccessException e) {
 			log.debug("", e);
+			throw e;
+		}
+	}
+	
+	@Override
+	public int delete(final String[] cbIds, SysUserVO loginVO) {
+		try {
+			return getHibernateTemplate().execute(new HibernateCallback<Integer>() {
+
+				@Override
+				public Integer doInHibernate(Session session)
+						throws HibernateException, SQLException {
+					StringBuffer sql = new StringBuffer("delete from BASE_MASTER_FILE where (1 = 2");
+					if (!SystemUtil.isNull(cbIds)) {
+						for (String cbId : cbIds) {
+							sql.append(" or MASTER_FILE_PID = '").append(cbId).append("'");
+						}
+					}
+					sql.append(")");
+					
+					SQLQuery sqlQuery = session.createSQLQuery(sql.toString());
+					return sqlQuery.executeUpdate();
+				}
+			});
+		} catch (DataAccessException e) {
+			log.error("删除原文失败", e);
 			throw e;
 		}
 	}

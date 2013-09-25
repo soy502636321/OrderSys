@@ -36,6 +36,23 @@ public class BaseMasterFileAction extends BaseAction {
 		return "show_Query";
 	}
 	
+	public String add() {
+		return ForwardUtil.FORWARD_ADD_PAGE;
+	}
+	
+	public String save() {
+		if (!SystemUtil.isNull(getUpload()) && getBaseMasterFileVO() != null) {
+			System.out.println("1");
+			int i = getBaseMasterFileService().saveBaseMasterFile(getUpload(), getUploadFileName(), getUploadContentType(), getBaseMasterFileVO().getSysOrderPid(), getLoginVO());
+			System.out.println("2");
+			addActionMessage("成功上传【" + i + "】个原文文件");
+			return query();
+		} else {
+			addActionError("请先选择要上传的文件");
+			return ForwardUtil.FORWARD_ADD_PAGE;
+		}
+	}
+	
 	public String download() {
 		log.debug("");
 		if (!SystemUtil.isNull(getCbId())) {
@@ -47,6 +64,21 @@ public class BaseMasterFileAction extends BaseAction {
 			return query();
 		}
 		return "download";
+	}
+	
+	public String delete() {
+		log.debug("");
+		if (!SystemUtil.isNull(getCbId())) {
+			int i = getBaseMasterFileService().deleteMasterFile(getCbId(), getLoginVO());
+			addActionMessage("成功删除【" + i + "】个原文");
+		} else {
+			addActionError("请先选择原文记录");
+		}
+		return query();
+	}
+	
+	public String back() {
+		return query();
 	}
 
 	public BaseMasterFileService getBaseMasterFileService() {

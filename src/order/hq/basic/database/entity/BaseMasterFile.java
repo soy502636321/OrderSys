@@ -13,6 +13,19 @@ public class BaseMasterFile {
 	private long downloadSize; //下载次数
 	
 	private SysOrder sysOrder;
+	
+	public BaseMasterFile() {
+	}
+
+	public BaseMasterFile(File saveFile, String string, SysOrder sysOrder,
+			SysUser sysUser) {
+		this.masterFileName = saveFile.getName();
+		this.masterFileSize = saveFile.length();
+		this.masterFileLocation = string;
+		this.operTime = new Date();
+		this.operUser = sysUser;
+		this.sysOrder = sysOrder;
+	}
 
 	public String getMasterFilePid() {
 		return masterFilePid;

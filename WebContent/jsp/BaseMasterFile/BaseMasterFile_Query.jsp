@@ -9,9 +9,9 @@
 </head>
 
 <body>
-	<s:form action="baseMasterFileAction" namespace="/masterFileAction">
+	<s:form action="baseMasterFileAction" namespace="/masterFile">
 		<br>
-		<s:hidden name="baseTranslatedFileVO.sysOrderPid" />
+		<s:hidden name="baseMasterFileVO.sysOrderPid" />
 		<table style="width: 100%">
 			<tr>
 				<td colspan="4">${ actionMessages[0] }${actionErrors[0]}</td>
@@ -19,6 +19,8 @@
 			<tr>
 				<td><order:buttons function="4028848c414eccdf01414ecce5f60001">
 						<order:button name="下载原文" mode="more" location="other"></order:button>
+						<order:button name="上传原文" mode="all" location="this"></order:button>
+						<order:button name="删除原文" mode="more" location="this"></order:button>
 					</order:buttons></td>
 			</tr>
 			<tr>

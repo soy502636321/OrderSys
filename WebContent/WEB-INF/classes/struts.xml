@@ -12,7 +12,7 @@
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 
 	<constant name="struts.objectFactory" value="spring"></constant>
-	<constant name="struts.devMode" value="false" />
+	<constant name="struts.devMode" value="true" />
 	<constant name= "struts.multipart.maxSize" value="1073741824" />
 
 
@@ -158,12 +158,19 @@
 
 		<action name="publicCompleteSysFeedbackAction"
 			class="order.hq.web.action.sysfeedback.state.PublicCompleteSysFeedbackAction">
-			<result name="query">/jsp/SysFeedback/Public_Complete_SysFeedback_Query.jsp
-			</result>
+			<result name="query">/jsp/SysFeedback/Public_Complete_SysFeedback_Query.jsp</result>
 		</action>
 		
 		<action name="privateInitateSysFeedbackAction" class="order.hq.web.action.sysfeedback.state.PrivateInitateSysFeedbackAction">
-			<result name="query">/jsp/SysFeedback/</result>
+			<result name="query">/jsp/SysFeedback/Private_Initate_SysFeedback_Query.jsp</result>
+		</action>
+		
+		<action name="privateHandleSysFeedbackAction" class="order.hq.web.action.sysfeedback.state.PrivateHandleSysFeedbackAction">
+			<result name="query">/jsp/SysFeedback/Private_Handle_SysFeedback_Query.jsp</result>
+		</action>
+		
+		<action name="privateCompleteSysFeedbackAction" class="order.hq.web.action.sysfeedback.state.PrivateCompleteSysFeedbackAction">
+			<result name="query">/jsp/SysFeedback/Private_Complete_SysFeedback_Query.jsp</result>
 		</action>
 	</package>
 
@@ -191,9 +198,10 @@
 		</action>
 	</package>
 
-	<package name="baseMasterFileModel" extends="iterceptor" namespace="/masterFileAction">
+	<package name="baseMasterFileModel" extends="iterceptor" namespace="/masterFile">
 		<action name="baseMasterFileAction" class="order.hq.web.action.file.BaseMasterFileAction">
 			<result name="query">/jsp/BaseMasterFile/BaseMasterFile_Query.jsp</result>
+			<result name="add">/jsp/BaseMasterFile/BaseMasterFile_Add.jsp</result>
 			<result name="show_Query">/jsp/BaseMasterFile/BaseMasterFile_Show_Query.jsp</result>
 		</action>
 	</package>

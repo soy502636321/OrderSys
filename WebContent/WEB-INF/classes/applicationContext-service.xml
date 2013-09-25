@@ -40,6 +40,7 @@
 	<!-- 原文件服务 -->
 	<bean id="baseMasterFileService" class="order.hq.web.service.impl.BaseMasterFileServiceImpl">
 		<property name="baseMasterFileDAO" ref="baseMasterFileDAO" />
+		<property name="sysOrderDAO" ref="sysOrderDAO" />
 	</bean>
 	
 	<!-- 译文文件服务 -->	

@@ -20,4 +20,10 @@ public class PrivateInitateSysOrderAction extends SysOrderAction {
 		setPaginatedList(paginatedList);
 		return ForwardUtil.FORWARD_QUERY_PAGE;
 	}
+	
+	@Override
+	public String queryBaseMasterFile() {
+		super.queryBaseMasterFile();
+		return ForwardUtil.FORWARD_MASTERFILE_PAGE;
+	}
 }

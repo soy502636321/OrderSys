@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2013-09-24 18:04:58
+Date: 2013-09-25 18:03:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -55,6 +55,8 @@ CREATE TABLE `base_master_file` (
 -- ----------------------------
 -- Records of base_master_file
 -- ----------------------------
+INSERT INTO `base_master_file` VALUES ('4028848c4153dd2c014153dda7230002', 'listener.ora', '366', 'BaseMasterFile\\2013-09-25\\c25dcd29-900d-499d-a5be-4fa6421465f6\\listener.ora', '8a80cd8e40fd31be0140fd31d3460001', '2013-09-25', '0', 'admin');
+INSERT INTO `base_master_file` VALUES ('4028848c4153dd2c014153e06efd0003', 'tnsnames.ora', '332', 'BaseMasterFile\\2013-09-25\\72836157-667b-43fa-ac39-72632468d3cf\\tnsnames.ora', '8a80cd8e40fd31be0140fd31d3460001', '2013-09-25', '0', 'admin');
 INSERT INTO `base_master_file` VALUES ('ff80808140fd190b0140fd191f3d0001', '测试文件.txt', '400', 'BaseMasterFile/test.txt', '8a80cd8e40fd2c8d0140fd2ca3170001', '2013-09-17', '0', 'admin');
 
 -- ----------------------------
@@ -204,7 +206,7 @@ CREATE TABLE `sys_feedback` (
 -- ----------------------------
 -- Records of sys_feedback
 -- ----------------------------
-INSERT INTO `sys_feedback` VALUES ('8a80c97b41219b290141219b4e970001', '8a80cd8e40fd2c8d0140fd2ca3170001', '8a80c97b4120aa73014120aa8c600001');
+INSERT INTO `sys_feedback` VALUES ('8a80c97b41219b290141219b4e970001', '8a80cd8e40fd2c8d0140fd2ca3170001', '8a80c97b4120a826014120a83cc30001');
 INSERT INTO `sys_feedback` VALUES ('8a80cf0f413e4a7b01413e4aa7330001', '8a80cd8e40fd2c8d0140fd2ca3170001', '8a80c97b4120a8b6014120a8cc410001');
 INSERT INTO `sys_feedback` VALUES ('8a80cf0f413e4b1601413e4b2fbc0001', '8a80cd8e40fd2c8d0140fd2ca3170001', '8a80c97b4120aa73014120aa8c600001');
 
@@ -237,12 +239,48 @@ INSERT INTO `sys_function` VALUES ('4028848c414debd801414debdea90001', '下载�
 INSERT INTO `sys_function` VALUES ('4028848c414eca6b01414eca75160001', '译文管理', null, '03', '》译文管理', null, '2013-09-24 15:06:33');
 INSERT INTO `sys_function` VALUES ('4028848c414eccdf01414ecce5f60001', '原文管理', null, '03', '》原文管理', null, '2013-09-24 15:09:13');
 INSERT INTO `sys_function` VALUES ('4028848c414ecf0a01414ecf11040001', '下载原文', 'baseMasterFileAction!download', '02', '》原文管理》下载原文', '4028848c414eccdf01414ecce5f60001', '2013-09-24 15:11:35');
-INSERT INTO `sys_function` VALUES ('4028848c414f47b801414f47c3650001', '订单原文', null, '02', '反馈管理》新反馈》订单原文', '8a80c97b4120c105014120c11c700001', '2013-09-24 17:23:25');
-INSERT INTO `sys_function` VALUES ('4028848c414f49e201414f49e8f40001', '订单译文', null, '02', '反馈管理》新反馈》订单译文', '8a80c97b4120c105014120c11c700001', '2013-09-24 17:25:45');
+INSERT INTO `sys_function` VALUES ('4028848c414f47b801414f47c3650001', '订单原文', 'publicInitateSysFeedbackAction!queryBaseMasterFile', '02', '反馈管理》新反馈》订单原文', '8a80c97b4120c105014120c11c700001', '2013-09-24 17:23:25');
+INSERT INTO `sys_function` VALUES ('4028848c414f49e201414f49e8f40001', '订单译文', 'publicInitateSysFeedbackAction!queryBaseTranslatedFile', '02', '反馈管理》新反馈》订单译文', '8a80c97b4120c105014120c11c700001', '2013-09-24 17:25:45');
 INSERT INTO `sys_function` VALUES ('4028848c414f4d1101414f4d18430001', '原文管理', null, '03', '》原文管理(显示)', null, '2013-09-24 17:29:14');
 INSERT INTO `sys_function` VALUES ('4028848c414f4e3d01414f4e449d0001', '下载原文', 'baseMasterFileAction!download', '03', '》原文管理(显示)》下载原文', '4028848c414f4d1101414f4d18430001', '2013-09-24 17:30:31');
 INSERT INTO `sys_function` VALUES ('4028848c414f5a4701414f5a5c320001', '译文管理', null, '03', '》译文管理(显示)', null, '2013-09-24 17:43:43');
 INSERT INTO `sys_function` VALUES ('4028848c414f5c6e01414f5c75ea0001', '下载译文', 'baseTranslatedFileAction!download', '02', '》译文管理(显示)》下载译文', '4028848c414f5a4701414f5a5c320001', '2013-09-24 17:46:01');
+INSERT INTO `sys_function` VALUES ('4028848c4152eecf014152eed87e0001', '订单原文', 'publicHandleSysFeedbackAction!queryBaseMasterFile', '02', '反馈管理》处理中》订单原文', '8a80c97b4120c1a5014120c1bbfc0001', '2013-09-25 10:24:46');
+INSERT INTO `sys_function` VALUES ('4028848c4152f048014152f04e650001', '订单译文', 'publicHandleSysFeedbackAction!queryBaseTranslatedFile', '02', '反馈管理》处理中》订单译文', '8a80c97b4120c1a5014120c1bbfc0001', '2013-09-25 10:26:22');
+INSERT INTO `sys_function` VALUES ('4028848c4152fc1c014152fc22880001', '订单译文', 'publicCompleteSysFeedbackAction!queryBaseTranslatedFile', '02', '反馈管理》处理完》订单译文', '8a80c97b4120c22c014120c2431d0001', '2013-09-25 10:39:17');
+INSERT INTO `sys_function` VALUES ('4028848c4152fc5e014152fc64d10001', '订单原文', 'publicCompleteSysFeedbackAction!queryBaseMasterFile', '02', '反馈管理》处理完》订单原文', '8a80c97b4120c22c014120c2431d0001', '2013-09-25 10:39:34');
+INSERT INTO `sys_function` VALUES ('4028848c4152ffe5014152ffecde0001', '查看反馈', null, '02', '反馈管理》处理完》查看反馈', '8a80c97b4120c22c014120c2431d0001', '2013-09-25 10:43:26');
+INSERT INTO `sys_function` VALUES ('4028848c415307ec01415307f2c30001', '反馈查看', null, '01', '反馈查看', null, '2013-09-25 10:52:11');
+INSERT INTO `sys_function` VALUES ('4028848c415308e901415308f02e0001', '新反馈', '/sysFeedback/privateInitateSysFeedbackAction!query', '01', '反馈查看》新反馈', '4028848c415307ec01415307f2c30001', '2013-09-25 10:53:16');
+INSERT INTO `sys_function` VALUES ('4028848c4153095e01415309658d0001', '处理中', '/sysFeedback/privateHandleSysFeedbackAction!query', '01', '反馈查看》处理中', '4028848c415307ec01415307f2c30001', '2013-09-25 10:53:46');
+INSERT INTO `sys_function` VALUES ('4028848c4153099a01415309a0e10001', '处理完', '/sysFeedback/privateCompleteSysFeedbackAction!query', '01', '反馈查看》处理完', '4028848c415307ec01415307f2c30001', '2013-09-25 10:54:01');
+INSERT INTO `sys_function` VALUES ('4028848c4153a94c014153a957890001', '查看反馈', 'privateInitateSysFeedbackAction!show', '02', '反馈查看》新反馈》查看反馈', '4028848c415308e901415308f02e0001', '2013-09-25 13:48:28');
+INSERT INTO `sys_function` VALUES ('4028848c4153a99c014153a9a3770001', '订单原文', 'privateInitateSysFeedbackAction!queryBaseMasterFile', '02', '反馈查看》新反馈》订单原文', '4028848c415308e901415308f02e0001', '2013-09-25 13:48:48');
+INSERT INTO `sys_function` VALUES ('4028848c4153a9d5014153a9dc3a0001', '订单译文', 'privateInitateSysFeedbackAction!queryBaseTranslatedFile', '02', '反馈查看》新反馈》订单译文', '4028848c415308e901415308f02e0001', '2013-09-25 13:49:02');
+INSERT INTO `sys_function` VALUES ('4028848c4153b019014153b01f9f0001', '订单译文', 'privateHandleSysFeedbackAction!queryBaseTranslatedFile', '02', '反馈查看》处理中》订单译文', '4028848c4153095e01415309658d0001', '2013-09-25 13:55:53');
+INSERT INTO `sys_function` VALUES ('4028848c4153b088014153b08f7f0001', '查看反馈', 'privateHandleSysFeedbackAction!show', '02', '反馈查看》处理中》查看反馈', '4028848c4153095e01415309658d0001', '2013-09-25 13:56:22');
+INSERT INTO `sys_function` VALUES ('4028848c4153b0e8014153b0eef50001', '订单原文', 'privateHandleSysFeedbackAction!queryBaseMasterFile', '02', '反馈查看》处理中》订单原文', '4028848c4153095e01415309658d0001', '2013-09-25 13:56:46');
+INSERT INTO `sys_function` VALUES ('4028848c4153b28b014153b292350001', '订单原文', 'privateCompleteSysFeedbackAction!queryBaseMasterFile', '02', '反馈查看》处理完》订单原文', '4028848c4153099a01415309a0e10001', '2013-09-25 13:58:33');
+INSERT INTO `sys_function` VALUES ('4028848c4153b2d6014153b2dd760001', '查看反馈', 'privateCompleteSysFeedbackAction!show', '02', '反馈查看》处理完》查看反馈', '4028848c4153099a01415309a0e10001', '2013-09-25 13:58:53');
+INSERT INTO `sys_function` VALUES ('4028848c4153b306014153b30d9f0001', '订单译文', 'privateCompleteSysFeedbackAction!queryBaseTranslatedFile', '02', '反馈查看》处理完》订单译文', '4028848c4153099a01415309a0e10001', '2013-09-25 13:59:05');
+INSERT INTO `sys_function` VALUES ('4028848c4153b6d8014153b6df670001', '增加订单', 'privateInitateSysOrderAction!add', '02', '订单查看》新订单》增加订单', '8a80cd8e40fd58e50140fd58f8d20001', '2013-09-25 14:03:15');
+INSERT INTO `sys_function` VALUES ('4028848c4153b70c014153b712eb0001', '查看订单', 'privateInitateSysOrderAction!findSysOrder', '02', '订单查看》新订单》查看订单', '8a80cd8e40fd58e50140fd58f8d20001', '2013-09-25 14:03:28');
+INSERT INTO `sys_function` VALUES ('4028848c4153b746014153b74d540001', '查看指示', 'privateInitateSysOrderAction!findSysShow', '02', '订单查看》新订单》查看指示', '8a80cd8e40fd58e50140fd58f8d20001', '2013-09-25 14:03:43');
+INSERT INTO `sys_function` VALUES ('4028848c4153b780014153b787010001', '查看原文', 'privateInitateSysOrderAction!queryBaseMasterFile', '02', '订单查看》新订单》查看原文', '8a80cd8e40fd58e50140fd58f8d20001', '2013-09-25 14:03:58');
+INSERT INTO `sys_function` VALUES ('4028848c4153bf88014153bf8eab0001', '上传原文', 'baseMasterFileAction!add', '02', '》原文管理》上传原文', '4028848c414eccdf01414ecce5f60001', '2013-09-25 14:12:44');
+INSERT INTO `sys_function` VALUES ('4028848c4153bfea014153bff0c10001', '删除原文', 'baseMasterFileAction!delete', '02', '》原文管理》删除原文', '4028848c414eccdf01414ecce5f60001', '2013-09-25 14:13:09');
+INSERT INTO `sys_function` VALUES ('4028848c41540035014154003c0b0001', '查看订单', 'privateAcceptSysOrderAction!findSysOrder', '02', '订单查看》已接受》查看订单', '8a80cd8e40fd657e0140fd65920a0001', '2013-09-25 15:23:23');
+INSERT INTO `sys_function` VALUES ('4028848c415427b901415427c07f0001', '查看指示', 'privateAcceptSysOrderAction!findSysShow', '02', '订单查看》已接受》查看指示', '8a80cd8e40fd657e0140fd65920a0001', '2013-09-25 16:06:33');
+INSERT INTO `sys_function` VALUES ('4028848c41542864014154286b650001', '查看原文', 'privateAcceptSysOrderAction!queryBaseMasterFile', '02', '订单查看》已接受》查看原文', '8a80cd8e40fd657e0140fd65920a0001', '2013-09-25 16:07:17');
+INSERT INTO `sys_function` VALUES ('4028848c41542a030141542a09e30001', '查看原文', 'privateTurnoverSysOrderAction!queryBaseMasterFile', '02', '订单查看》已成交》查看原文', '8a80cd8e40fd6c580140fd6c6c8e0001', '2013-09-25 16:09:03');
+INSERT INTO `sys_function` VALUES ('4028848c41542a480141542a4f680001', '查看指示', 'privateTurnoverSysOrderAction!findSysShow', '02', '订单查看》已成交》查看指示', '8a80cd8e40fd6c580140fd6c6c8e0001', '2013-09-25 16:09:20');
+INSERT INTO `sys_function` VALUES ('4028848c41542a790141542a7faf0001', '查看订单', 'privateTurnoverSysOrderAction!findSysOrder', '02', '订单查看》已成交》查看订单', '8a80cd8e40fd6c580140fd6c6c8e0001', '2013-09-25 16:09:33');
+INSERT INTO `sys_function` VALUES ('4028848c41542c830141542c8b4e0001', '查看订单', 'privateCompleteSysOrderAction!findSysOrder', '02', '订单查看》已完成》查看订单', '8a80cd8e40fd71240140fd7137da0001', '2013-09-25 16:11:47');
+INSERT INTO `sys_function` VALUES ('4028848c41542ce50141542cec4a0001', '查看指示', 'privateCompleteSysOrderAction!findSysShow', '02', '订单查看》已完成》查看指示', '8a80cd8e40fd71240140fd7137da0001', '2013-09-25 16:12:12');
+INSERT INTO `sys_function` VALUES ('4028848c41542d360141542d3d190001', '查看原文', 'privateCompleteSysOrderAction!queryBaseMasterFile', '02', '订单查看》已完成》查看原文', '8a80cd8e40fd71240140fd7137da0001', '2013-09-25 16:12:32');
+INSERT INTO `sys_function` VALUES ('4028848c41542f9d0141542fa39a0001', '查看订单', 'privateCancelSysOrderAction!findSysOrder', '02', '订单查看》已作废》查看订单', '8a80cd8e40fd78fc0140fd7910370001', '2013-09-25 16:15:10');
+INSERT INTO `sys_function` VALUES ('4028848c415430030141543009c60001', '查看原文', 'privateCancelSysOrderAction!queryBaseMasterFile', '02', '订单查看》已作废》查看原文', '8a80cd8e40fd78fc0140fd7910370001', '2013-09-25 16:15:36');
+INSERT INTO `sys_function` VALUES ('4028848c4154303f0141543046520001', '查看指示', 'privateCancelSysOrderAction!findSysShow', '02', '订单查看》已作废》查看指示', '8a80cd8e40fd78fc0140fd7910370001', '2013-09-25 16:15:51');
 INSERT INTO `sys_function` VALUES ('8a80c97b411f856e01411f8582eb0001', '系统管理', null, '01', '系统管理', null, '2013-09-22 10:53:13');
 INSERT INTO `sys_function` VALUES ('8a80c97b411f8a4901411f8a5cdd0001', '用户管理', '/system/sysUserAction!query', '01', '系统管理》用户管理', '8a80c97b411f856e01411f8582eb0001', '2013-09-22 11:10:17');
 INSERT INTO `sys_function` VALUES ('8a80c97b411f8ac601411f8ade130001', '语种管理', '/system/baseLanguageAction!query', '01', '系统管理》语种管理', '8a80c97b411f856e01411f8582eb0001', '2013-09-22 11:10:21');
@@ -377,6 +415,6 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('admin', 'ff80808140fbba8c0140fbba9b7d0001', null, '$1$hqmis$SbJV5WUMpMkFs0IIs3SyJ/', '01', null, '15976812172', null, '502636321@qq.com', null, null, null, null);
+INSERT INTO `sys_user` VALUES ('admin', 'ff80808140fbba8c0140fbba9b7d0001', '超级管理员', '$1$hqmis$SbJV5WUMpMkFs0IIs3SyJ/', '01', null, '15976812172', null, '502636321@qq.com', null, null, null, null);
 INSERT INTO `sys_user` VALUES ('test-1', null, '测试帐号-2', null, null, null, null, null, null, null, null, '备注-2', null);
 INSERT INTO `sys_user` VALUES ('test-4', 'ff80808140fbba8c0140fbba9b7d0001', '测试帐号-4', null, null, null, null, null, null, null, null, '备注-4', null);

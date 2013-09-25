@@ -1,28 +1,42 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<jsp:directive.include file="/include/mainMenu.jsp" />
+<%@ page language="java" pageEncoding="UTF-8"%>
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'Private_Initate_SysFeedback_Query.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+<head>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+</head>
 
-  </head>
-  
-  <body>
-    This is my JSP page. <br>
-  </body>
+<body>
+	<s:form action="privateInitateSysFeedbackAction"
+		namespace="/sysFeedback">
+		<br>
+		<table style="width: 100%">
+			<tr>
+				<td colspan="4">${ actionMessages[0] }${actionErrors[0]}</td>
+			</tr>
+			<tr>
+				<td><order:buttons function="4028848c415308e901415308f02e0001">
+						<order:button name="查看反馈" mode="single" location="other"></order:button>
+						<order:button name="处理反馈" mode="more" location="this"></order:button>
+						<order:button name="订单原文" mode="single" location="other"></order:button>
+						<order:button name="订单译文" mode="single" location="other"></order:button>
+					</order:buttons>
+				</td>
+			</tr>
+			<tr>
+				<td><display:table name="paginatedList" class="simple"
+						requestURI="newOrderAction!query">
+						<display:column property="feedbackPid"
+							decorator="order.hq.common.displaytag.CheckBoxDecorator"
+							style="width:3%;"
+							title="<input type=checkbox class=checkbox name=cbAll onclick=changeCheckBoxAll(this,\"cbId\")>">
+						</display:column>
+						<display:column property="feedbackPid" title="指示编号" />
+					</display:table>
+				</td>
+			</tr>
+		</table>
+	</s:form>
+</body>
 </html>

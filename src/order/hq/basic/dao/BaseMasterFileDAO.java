@@ -13,5 +13,7 @@ public interface BaseMasterFileDAO extends BaseDAO {
 			SysUserVO sysUserVO);
 
 	public List<BaseMasterFile> findByPK(String[] cbIds);
+
+	public int delete(String[] cbIds, SysUserVO loginVO);
 	
 }

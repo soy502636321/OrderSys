@@ -11,7 +11,7 @@
 <body>
 	<s:form action="baseMasterFileAction" namespace="/masterFileAction">
 		<br>
-		<s:hidden name="baseTranslatedFileVO.sysOrderPid" />
+		<s:hidden name="baseMasterFileVO.sysOrderPid" />
 		<table style="width: 100%">
 			<tr>
 				<td colspan="4">${ actionMessages[0] }${actionErrors[0]}</td>
