@@ -6,9 +6,11 @@ import org.slf4j.Logger;
 
 import order.hq.basic.dao.SysFeedbackDAO;
 import order.hq.basic.database.entity.ConfigSysFeedbackState;
+import order.hq.basic.database.entity.SysFeedback;
 import order.hq.basic.vo.SysFeedbackVO;
 import order.hq.basic.vo.SysUserVO;
 import order.hq.util.PaginatedList;
+import order.hq.util.StringUtil;
 import order.hq.web.service.SysFeedbackService;
 
 public class SysFeedbackServiceImpl implements SysFeedbackService {
@@ -20,6 +22,18 @@ public class SysFeedbackServiceImpl implements SysFeedbackService {
 	public PaginatedList querySysFeedback(PaginatedList paginatedList, ConfigSysFeedbackState state,
 			SysFeedbackVO sysFeedbackVO, SysUserVO sysUserVO, SysUserVO sysUserVO2) {
 		return getSysFeedbackDAO().querySysFeedback(paginatedList, state, sysFeedbackVO, sysUserVO);
+	}
+	
+	@Override
+	public SysFeedbackVO findByPK(String string) {
+		SysFeedbackVO vo = null;
+		if (!StringUtil.isNull(string)) {
+			SysFeedback sysFeedback = (SysFeedback) getSysFeedbackDAO().findByPK(string, SysFeedback.class);
+			if (sysFeedback != null) {
+				vo = new SysFeedbackVO(sysFeedback);
+			}
+		}
+		return vo;
 	}
 	
 	@Override

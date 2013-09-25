@@ -16,12 +16,10 @@
 				<td colspan="4">${ actionMessages[0] }${actionErrors[0]}</td>
 			</tr>
 			<tr>
-				<td><order:buttons function="8a80c97b4120bee5014120befc9d0001">
-						<order:button name="处理反馈" mode="more" location="this"></order:button>
-						<order:button name="查看指示" mode="single" location="other"></order:button>
-						<order:button name="接受订单" mode="more" location="this"></order:button>
-						<order:button name="作废订单" mode="more" location="this"></order:button>
-						<order:button name="查看原文" mode="single" location="other"></order:button>
+				<td><order:buttons function="8a80c97b4120c22c014120c2431d0001">
+						<order:button name="查看反馈" mode="single" location="other"></order:button>
+						<order:button name="订单原文" mode="single" location="other"></order:button>
+						<order:button name="订单译文" mode="single" location="other"></order:button>
 					</order:buttons>
 				</td>
 			</tr>

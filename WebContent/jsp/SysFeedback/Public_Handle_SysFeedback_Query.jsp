@@ -18,6 +18,8 @@
 			<tr>
 				<td><order:buttons function="8a80c97b4120c1a5014120c1bbfc0001">
 						<order:button name="反馈完成" mode="more" location="this"></order:button>
+						<order:button name="订单原文" mode="single" location="other"></order:button>
+						<order:button name="订单译文" mode="single" location="other"></order:button>
 					</order:buttons>
 				</td>
 			</tr>

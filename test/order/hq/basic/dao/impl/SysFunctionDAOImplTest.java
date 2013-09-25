@@ -48,15 +48,14 @@ public class SysFunctionDAOImplTest {
 	@Test
 	public void testSave() {
 		SysFunctionDAO sysFunctionDAO = (SysFunctionDAO) factory.getBean("sysFunctionDAO");
-		SysFunction sysFunction = (SysFunction) sysFunctionDAO.findByPK("4028848c414f5a4701414f5a5c320001", SysFunction.class);
+		SysFunction sysFunction = (SysFunction) sysFunctionDAO.findByPK("4028848c415307ec01415307f2c30001", SysFunction.class);
 		SysFunction function = new SysFunction();
-		function.setFunctionName("下载译文");
-		function.setFunctionType(GlobalUtil.isCfg);
-		function.setRemark(sysFunction.getRemark() + "》下载译文");
-//		function.setRemark("》译文管理(显示)");
+		function.setFunctionName("处理完");
+		function.setFunctionType(GlobalUtil.isMenu);
+		function.setRemark(sysFunction.getRemark() + "》处理完");
+//		function.setRemark("反馈查看");
 		function.setParent(sysFunction);
 		function.setOperTime(new Date());
-		
 		sysFunctionDAO.save(function);
 	}
 

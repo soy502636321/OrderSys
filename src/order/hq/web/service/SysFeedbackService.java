@@ -11,4 +11,6 @@ public interface SysFeedbackService {
 	public int changeState(String[] cbId,
 			ConfigSysFeedbackState initateFeedback,
 			ConfigSysFeedbackState handleFeedback, SysUserVO loginVO);
+
+	public SysFeedbackVO findByPK(String string);
 }

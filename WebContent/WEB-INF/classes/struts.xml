@@ -138,11 +138,11 @@
 	</package>
 
 	<!-- 反馈模块 -->
-	<package name="sysFeedbackModel" extends="iterceptor"
-		namespace="/sysFeedback">
-		<action name="sysFeedbackAction"
-			class="order.hq.web.action.sysfeedback.SysFeedbackAction">
-		</action>
+	<package name="sysFeedbackModel" extends="iterceptor" namespace="/sysFeedback">
+		<global-results>
+			<result name="sysFeedback_Show">/jsp/SysFeedback/SysFeedback_Show.jsp</result>
+			<result name="sysFeedback_Add">/jsp/SysFeedback/SysFeedback_Add.jsp</result>
+		</global-results>
 
 		<action name="publicInitateSysFeedbackAction"
 			class="order.hq.web.action.sysfeedback.state.PublicInitateSysFeedbackAction">
@@ -160,6 +160,10 @@
 			class="order.hq.web.action.sysfeedback.state.PublicCompleteSysFeedbackAction">
 			<result name="query">/jsp/SysFeedback/Public_Complete_SysFeedback_Query.jsp
 			</result>
+		</action>
+		
+		<action name="privateInitateSysFeedbackAction" class="order.hq.web.action.sysfeedback.state.PrivateInitateSysFeedbackAction">
+			<result name="query">/jsp/SysFeedback/</result>
 		</action>
 	</package>
 
