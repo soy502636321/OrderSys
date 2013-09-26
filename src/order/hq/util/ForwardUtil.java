@@ -42,4 +42,8 @@ public class ForwardUtil {
 	
 	public static final String FORWARD_MASTERFILE_SHOW_PAGE = "baseMasterFile_Show_Query";
 
+	public static final String FORWARD_SYSFEEDBACKFILE_PAGE = "sysFeedback_Query";
+
+	public static final String FORWARD_SYSFEEDBACKFILE_SHOW_PAGE = "sysFeedback_Show_Query";
+
 }

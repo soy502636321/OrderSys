@@ -205,5 +205,10 @@
 			<result name="show_Query">/jsp/BaseMasterFile/BaseMasterFile_Show_Query.jsp</result>
 		</action>
 	</package>
+	
+	<package name="sysFeedbackFileModel" extends="iterceptor" namespace="/sysFeedbackFile">
+		<action name="" class="order.hq.web.action.file.SysFeedbackFileAction">
+		</action>
+	</package>
 
 </struts>    
